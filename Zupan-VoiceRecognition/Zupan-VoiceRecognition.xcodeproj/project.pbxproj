@@ -9,13 +9,16 @@
 /* Begin PBXBuildFile section */
 		C2AE74AF2A8BC22B00C1341D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74AE2A8BC22B00C1341D /* AppDelegate.swift */; };
 		C2AE74B12A8BC22B00C1341D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74B02A8BC22B00C1341D /* SceneDelegate.swift */; };
-		C2AE74B32A8BC22B00C1341D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74B22A8BC22B00C1341D /* ViewController.swift */; };
-		C2AE74B62A8BC22B00C1341D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2AE74B42A8BC22B00C1341D /* Main.storyboard */; };
 		C2AE74B82A8BC22D00C1341D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2AE74B72A8BC22D00C1341D /* Assets.xcassets */; };
 		C2AE74BB2A8BC22D00C1341D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2AE74B92A8BC22D00C1341D /* LaunchScreen.storyboard */; };
 		C2AE74C62A8BC22D00C1341D /* Zupan_VoiceRecognitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74C52A8BC22D00C1341D /* Zupan_VoiceRecognitionTests.swift */; };
 		C2AE74D02A8BC22D00C1341D /* Zupan_VoiceRecognitionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74CF2A8BC22D00C1341D /* Zupan_VoiceRecognitionUITests.swift */; };
 		C2AE74D22A8BC22D00C1341D /* Zupan_VoiceRecognitionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74D12A8BC22D00C1341D /* Zupan_VoiceRecognitionUITestsLaunchTests.swift */; };
+		C2AE74DF2A8BCB9200C1341D /* SpeechRecognizerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74DE2A8BCB9200C1341D /* SpeechRecognizerProvider.swift */; };
+		C2AE74E72A8BCC8900C1341D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74E62A8BCC8900C1341D /* MainViewController.swift */; };
+		C2AE74EA2A8CC79200C1341D /* SpeechToCommandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74E92A8CC79200C1341D /* SpeechToCommandManager.swift */; };
+		C2AE74EC2A8CE07B00C1341D /* SpeechToCommandHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74EB2A8CE07B00C1341D /* SpeechToCommandHistory.swift */; };
+		C2AE74EE2A8D14CD00C1341D /* AnyPublisher+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74ED2A8D14CD00C1341D /* AnyPublisher+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +42,6 @@
 		C2AE74AB2A8BC22B00C1341D /* Zupan-VoiceRecognition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zupan-VoiceRecognition.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2AE74AE2A8BC22B00C1341D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2AE74B02A8BC22B00C1341D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C2AE74B22A8BC22B00C1341D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C2AE74B52A8BC22B00C1341D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C2AE74B72A8BC22D00C1341D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C2AE74BA2A8BC22D00C1341D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C2AE74BC2A8BC22D00C1341D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +50,11 @@
 		C2AE74CB2A8BC22D00C1341D /* Zupan-VoiceRecognitionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Zupan-VoiceRecognitionUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2AE74CF2A8BC22D00C1341D /* Zupan_VoiceRecognitionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zupan_VoiceRecognitionUITests.swift; sourceTree = "<group>"; };
 		C2AE74D12A8BC22D00C1341D /* Zupan_VoiceRecognitionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zupan_VoiceRecognitionUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C2AE74DE2A8BCB9200C1341D /* SpeechRecognizerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizerProvider.swift; sourceTree = "<group>"; };
+		C2AE74E62A8BCC8900C1341D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C2AE74E92A8CC79200C1341D /* SpeechToCommandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechToCommandManager.swift; sourceTree = "<group>"; };
+		C2AE74EB2A8CE07B00C1341D /* SpeechToCommandHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechToCommandHistory.swift; sourceTree = "<group>"; };
+		C2AE74ED2A8D14CD00C1341D /* AnyPublisher+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyPublisher+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +107,13 @@
 			children = (
 				C2AE74AE2A8BC22B00C1341D /* AppDelegate.swift */,
 				C2AE74B02A8BC22B00C1341D /* SceneDelegate.swift */,
-				C2AE74B22A8BC22B00C1341D /* ViewController.swift */,
-				C2AE74B42A8BC22B00C1341D /* Main.storyboard */,
-				C2AE74B72A8BC22D00C1341D /* Assets.xcassets */,
+				C2AE74DE2A8BCB9200C1341D /* SpeechRecognizerProvider.swift */,
+				C2AE74E92A8CC79200C1341D /* SpeechToCommandManager.swift */,
+				C2AE74EF2A8D153600C1341D /* Extensions */,
+				C2AE74E52A8BCC0600C1341D /* ViewController */,
+				C2AE74E42A8BCBFE00C1341D /* Views */,
+				C2AE74E02A8BCBC100C1341D /* Model */,
+				C2AE74E32A8BCBE300C1341D /* Resources */,
 				C2AE74B92A8BC22D00C1341D /* LaunchScreen.storyboard */,
 				C2AE74BC2A8BC22D00C1341D /* Info.plist */,
 			);
@@ -125,6 +135,45 @@
 				C2AE74D12A8BC22D00C1341D /* Zupan_VoiceRecognitionUITestsLaunchTests.swift */,
 			);
 			path = "Zupan-VoiceRecognitionUITests";
+			sourceTree = "<group>";
+		};
+		C2AE74E02A8BCBC100C1341D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C2AE74EB2A8CE07B00C1341D /* SpeechToCommandHistory.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C2AE74E32A8BCBE300C1341D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C2AE74B72A8BC22D00C1341D /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C2AE74E42A8BCBFE00C1341D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C2AE74E52A8BCC0600C1341D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C2AE74E62A8BCC8900C1341D /* MainViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C2AE74EF2A8D153600C1341D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C2AE74ED2A8D14CD00C1341D /* AnyPublisher+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +282,6 @@
 			files = (
 				C2AE74BB2A8BC22D00C1341D /* LaunchScreen.storyboard in Resources */,
 				C2AE74B82A8BC22D00C1341D /* Assets.xcassets in Resources */,
-				C2AE74B62A8BC22B00C1341D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +306,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2AE74B32A8BC22B00C1341D /* ViewController.swift in Sources */,
 				C2AE74AF2A8BC22B00C1341D /* AppDelegate.swift in Sources */,
 				C2AE74B12A8BC22B00C1341D /* SceneDelegate.swift in Sources */,
+				C2AE74DF2A8BCB9200C1341D /* SpeechRecognizerProvider.swift in Sources */,
+				C2AE74EA2A8CC79200C1341D /* SpeechToCommandManager.swift in Sources */,
+				C2AE74E72A8BCC8900C1341D /* MainViewController.swift in Sources */,
+				C2AE74EE2A8D14CD00C1341D /* AnyPublisher+Extensions.swift in Sources */,
+				C2AE74EC2A8CE07B00C1341D /* SpeechToCommandHistory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +349,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C2AE74B42A8BC22B00C1341D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C2AE74B52A8BC22B00C1341D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C2AE74B92A8BC22D00C1341D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -440,9 +484,10 @@
 				DEVELOPMENT_TEAM = G42Z863W7H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Zupan-VoiceRecognition/Info.plist";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow the app to use Microphone";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Allow the app to use ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -468,9 +513,10 @@
 				DEVELOPMENT_TEAM = G42Z863W7H;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Zupan-VoiceRecognition/Info.plist";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow the app to use Microphone";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Allow the app to use ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -11,12 +11,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    var speechToCommandManager: SpeechToCommandManagerType?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let scene = (scene as? UIWindowScene) else { return }
+        
+        window = UIWindow(windowScene: scene)
+        
+        
+        let locale = Locale.init(identifier: "en-US")
+//        let commands = Set(["count", "code", "command", "reset"])
+        let acceptedValues = Set(["1", "2", "3", "4", "5", "6", "7", "8", "9"])
+        let commands = Set(["one", "1", "2", "3", "4", "5", "6", "7", "8", "9", "count", "code", "reset", "back"])
+        
+        let manager = SpeechRecognizerProvider(locale: locale)
+        let speechToCommand = SpeechToCommandManager(manager: manager, availableCommands: commands)
+        self.speechToCommandManager = speechToCommand
+        window?.rootViewController = MainViewController(speechToCommand: speechToCommand)
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
