@@ -48,9 +48,16 @@ class SpeechToCommandManager: SpeechToCommandManagerType {
     }
     
     public func stop() {
+        if let actualState = self.state,
+           actualState.action == .store,
+           !buff.isEmpty {
+            let newCommand = SpeechToCommandInput(command: actualState.command, value: self.buff)
+            self.history.append(newCommand)
+        }
         manager.stop()
         cancellables.forEach { $0.cancel() }
         state = nil
+        buff.removeAll()
     }
     
     public func reset() {
