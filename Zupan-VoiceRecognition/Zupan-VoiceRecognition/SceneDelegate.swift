@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let identifier = Rules.availableLocales.contains(Locale.current.identifier) ? Locale.current.identifier : Rules.defaultLocale
         let locale = Locale.init(identifier: identifier)
         
-        guard let path = Bundle.main.path(forResource: "stateMachineDescription-\(identifier)", ofType: "json"),
+        guard let path = Bundle.main.path(forResource: "\(Files.baseLangFilename)\(identifier)", ofType: "json"),
               let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe),
               let stateMachineDescription = try? JSONDecoder().decode(StateMachineDescription.self, from: data) else {
             fatalError("Language not available")

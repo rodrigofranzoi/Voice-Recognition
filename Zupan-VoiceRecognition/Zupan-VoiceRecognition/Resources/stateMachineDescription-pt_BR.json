@@ -1,0 +1,36 @@
+{
+    "version": "1.0",
+    "language": "pt_BR",
+    "acceptedCommands": ["contar", "código", "resetar", "voltar"],
+    "acceptedWords": ["contar", "código", "resetar", "voltar", "um", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+    "replacableWords":
+    {
+        "um": "1"
+    },
+    "commands": [
+        {
+            "command": "contar",
+            "nextCommands": ["contar", "código", "resetar", "voltar"],
+            "acceptedParameters": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+            "action": "store"
+        },
+        {
+            "command": "código",
+            "nextCommands": ["contar", "código", "resetar", "voltar"],
+            "acceptedParameters": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+            "action": "store"
+        },
+        {
+            "command": "resetar",
+            "nextCommands": ["contar", "código", "resetar", "voltar"],
+            "acceptedParameters": [],
+            "action": "remove"
+        },
+        {
+            "command": "voltar",
+            "nextCommands": ["contar", "código", "resetar", "voltar"],
+            "acceptedParameters": [],
+            "action": "remove"
+        }
+    ]
+}

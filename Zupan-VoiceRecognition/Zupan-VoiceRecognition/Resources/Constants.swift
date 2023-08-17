@@ -11,3 +11,7 @@ struct Rules {
     static let defaultLocale: String = "en_US"
     static let availableLocales: Set<String> = ["en_US"]
 }
+
+struct Files {
+    static let baseLangFilename: String = "stateMachineDescription-"
+}
