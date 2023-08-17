@@ -21,14 +21,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: scene)
         
+        let identifier = Rules.availableLocales.contains(Locale.current.identifier) ? Locale.current.identifier : Rules.defaultLocale
+        let locale = Locale.init(identifier: identifier)
         
-        let locale = Locale.init(identifier: "en-US")
-//        let commands = Set(["count", "code", "command", "reset"])
-        let acceptedValues = Set(["1", "2", "3", "4", "5", "6", "7", "8", "9"])
-        let commands = Set(["one", "1", "2", "3", "4", "5", "6", "7", "8", "9", "count", "code", "reset", "back"])
-        
+        guard let path = Bundle.main.path(forResource: "stateMachineDescription-\(identifier)", ofType: "json"),
+              let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe),
+              let stateMachineDescription = try? JSONDecoder().decode(StateMachineDescription.self, from: data) else {
+            fatalError("Language not available")
+        }
+
         let manager = SpeechRecognizerProvider(locale: locale)
-        let speechToCommand = SpeechToCommandManager(manager: manager, availableCommands: commands)
+        let speechToCommand = SpeechToCommandManager(manager: manager, stateMachine: stateMachineDescription)
         self.speechToCommandManager = speechToCommand
         window?.rootViewController = MainViewController(speechToCommand: speechToCommand)
         window?.makeKeyAndVisible()

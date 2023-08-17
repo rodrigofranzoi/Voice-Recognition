@@ -79,31 +79,9 @@ class SpeechRecognizerProvider: NSObject, SpeechRecognizerProviderType, SFSpeech
                 }
             }
         }
-        
         return recognitionSubject
             .share()
             .eraseToAnyPublisher()
-    }
-    
-    public func receiveValue() -> AnyPublisher<String, SpeechRecognizerError> {
-        guard let recognizer = self.speechRecognizer,
-              let request = self.request,
-              recognizer.isAvailable else {
-            recognitionSubject.send(completion: .failure(.notStarted))
-            return recognitionSubject.eraseToAnyPublisher()
-        }
-        
-        self.task = recognizer.recognitionTask(with: request) { result, error in
-            if let error = error {
-                self.recognitionSubject.send(completion: .failure(.otherError(error)))
-            }
-            guard let result = result else { return }
-            if let lastSegment = result.bestTranscription.segments.last {
-                let lastWord = lastSegment.substring
-                self.recognitionSubject.send(lastWord)
-            }
-        }
-        return recognitionSubject.eraseToAnyPublisher()
     }
     
     public func stop() {

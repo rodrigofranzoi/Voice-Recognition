@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C22D67A12A8E10B200B2C5EE /* StateMachineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67A02A8E10B200B2C5EE /* StateMachineModel.swift */; };
+		C22D67A32A8E163F00B2C5EE /* stateMachineDescription-en_US.json in Resources */ = {isa = PBXBuildFile; fileRef = C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en_US.json */; };
+		C22D67A52A8E1E2C00B2C5EE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67A42A8E1E2C00B2C5EE /* Constants.swift */; };
 		C2AE74AF2A8BC22B00C1341D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74AE2A8BC22B00C1341D /* AppDelegate.swift */; };
 		C2AE74B12A8BC22B00C1341D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74B02A8BC22B00C1341D /* SceneDelegate.swift */; };
 		C2AE74B82A8BC22D00C1341D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2AE74B72A8BC22D00C1341D /* Assets.xcassets */; };
@@ -17,7 +20,7 @@
 		C2AE74DF2A8BCB9200C1341D /* SpeechRecognizerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74DE2A8BCB9200C1341D /* SpeechRecognizerProvider.swift */; };
 		C2AE74E72A8BCC8900C1341D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74E62A8BCC8900C1341D /* MainViewController.swift */; };
 		C2AE74EA2A8CC79200C1341D /* SpeechToCommandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74E92A8CC79200C1341D /* SpeechToCommandManager.swift */; };
-		C2AE74EC2A8CE07B00C1341D /* SpeechToCommandHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74EB2A8CE07B00C1341D /* SpeechToCommandHistory.swift */; };
+		C2AE74EC2A8CE07B00C1341D /* SpeechToCommandInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74EB2A8CE07B00C1341D /* SpeechToCommandInput.swift */; };
 		C2AE74EE2A8D14CD00C1341D /* AnyPublisher+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74ED2A8D14CD00C1341D /* AnyPublisher+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C22D67A02A8E10B200B2C5EE /* StateMachineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachineModel.swift; sourceTree = "<group>"; };
+		C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en_US.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "stateMachineDescription-en_US.json"; sourceTree = "<group>"; };
+		C22D67A42A8E1E2C00B2C5EE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C2AE74AB2A8BC22B00C1341D /* Zupan-VoiceRecognition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zupan-VoiceRecognition.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2AE74AE2A8BC22B00C1341D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2AE74B02A8BC22B00C1341D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,7 +59,7 @@
 		C2AE74DE2A8BCB9200C1341D /* SpeechRecognizerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizerProvider.swift; sourceTree = "<group>"; };
 		C2AE74E62A8BCC8900C1341D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C2AE74E92A8CC79200C1341D /* SpeechToCommandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechToCommandManager.swift; sourceTree = "<group>"; };
-		C2AE74EB2A8CE07B00C1341D /* SpeechToCommandHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechToCommandHistory.swift; sourceTree = "<group>"; };
+		C2AE74EB2A8CE07B00C1341D /* SpeechToCommandInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechToCommandInput.swift; sourceTree = "<group>"; };
 		C2AE74ED2A8D14CD00C1341D /* AnyPublisher+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyPublisher+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C22D67A62A8E57E800B2C5EE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C2AE74DE2A8BCB9200C1341D /* SpeechRecognizerProvider.swift */,
+				C2AE74E92A8CC79200C1341D /* SpeechToCommandManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		C2AE74A22A8BC22B00C1341D = {
 			isa = PBXGroup;
 			children = (
@@ -107,13 +122,12 @@
 			children = (
 				C2AE74AE2A8BC22B00C1341D /* AppDelegate.swift */,
 				C2AE74B02A8BC22B00C1341D /* SceneDelegate.swift */,
-				C2AE74DE2A8BCB9200C1341D /* SpeechRecognizerProvider.swift */,
-				C2AE74E92A8CC79200C1341D /* SpeechToCommandManager.swift */,
 				C2AE74EF2A8D153600C1341D /* Extensions */,
+				C2AE74E02A8BCBC100C1341D /* Model */,
+				C22D67A62A8E57E800B2C5EE /* Services */,
+				C2AE74E32A8BCBE300C1341D /* Resources */,
 				C2AE74E52A8BCC0600C1341D /* ViewController */,
 				C2AE74E42A8BCBFE00C1341D /* Views */,
-				C2AE74E02A8BCBC100C1341D /* Model */,
-				C2AE74E32A8BCBE300C1341D /* Resources */,
 				C2AE74B92A8BC22D00C1341D /* LaunchScreen.storyboard */,
 				C2AE74BC2A8BC22D00C1341D /* Info.plist */,
 			);
@@ -140,7 +154,8 @@
 		C2AE74E02A8BCBC100C1341D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C2AE74EB2A8CE07B00C1341D /* SpeechToCommandHistory.swift */,
+				C2AE74EB2A8CE07B00C1341D /* SpeechToCommandInput.swift */,
+				C22D67A02A8E10B200B2C5EE /* StateMachineModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -149,6 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				C2AE74B72A8BC22D00C1341D /* Assets.xcassets */,
+				C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en_US.json */,
+				C22D67A42A8E1E2C00B2C5EE /* Constants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -281,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2AE74BB2A8BC22D00C1341D /* LaunchScreen.storyboard in Resources */,
+				C22D67A32A8E163F00B2C5EE /* stateMachineDescription-en_US.json in Resources */,
 				C2AE74B82A8BC22D00C1341D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,8 +329,10 @@
 				C2AE74DF2A8BCB9200C1341D /* SpeechRecognizerProvider.swift in Sources */,
 				C2AE74EA2A8CC79200C1341D /* SpeechToCommandManager.swift in Sources */,
 				C2AE74E72A8BCC8900C1341D /* MainViewController.swift in Sources */,
+				C22D67A12A8E10B200B2C5EE /* StateMachineModel.swift in Sources */,
 				C2AE74EE2A8D14CD00C1341D /* AnyPublisher+Extensions.swift in Sources */,
-				C2AE74EC2A8CE07B00C1341D /* SpeechToCommandHistory.swift in Sources */,
+				C2AE74EC2A8CE07B00C1341D /* SpeechToCommandInput.swift in Sources */,
+				C22D67A52A8E1E2C00B2C5EE /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

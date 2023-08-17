@@ -125,6 +125,25 @@ class MainViewController: UIViewController {
             .sink { command in
                 self.lastCommandLabel.text = command.isEmpty ? "empty" : command
             }.store(in: &cancellables)
+        
+        
+        speechToCommand
+            .historyValueProvider
+            .receive(on: RunLoop.main)
+            .sink { history in
+                history.forEach { input in
+                    print("✅ History:", input.value)
+                }
+            }.store(in: &cancellables)
+        
+        speechToCommand
+            .stateProvider
+            .receive(on: RunLoop.main)
+            .sink { state in
+                print("✅ State Changed", state.command)
+            }.store(in: &cancellables)
+        
+        
     }
     
 
