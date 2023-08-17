@@ -10,9 +10,11 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var mainRouter: MainRouterType?
 
+    // Main Dependencies
     var speechToCommandManager: SpeechToCommandManagerType?
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -33,7 +35,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let manager = SpeechRecognizerProvider(locale: locale)
         let speechToCommand = SpeechToCommandManager(manager: manager, stateMachine: stateMachineDescription)
         self.speechToCommandManager = speechToCommand
-        window?.rootViewController = MainViewController(speechToCommand: speechToCommand)
+        
+        let navController = UINavigationController()
+        
+        self.mainRouter = MainRouter(navigationController: navController, speechToCommandManager: speechToCommand)
+        self.mainRouter?.start()
+        
+        window?.rootViewController = navController
         window?.makeKeyAndVisible()
     }
 

@@ -9,15 +9,15 @@ import Foundation
 import Combine
 
 protocol SpeechToCommandManagerType {
-    func start()
-    func reset()
-    func stop()
-    func handleActionFor(_ value: String) -> String?
-    
     var stateProvider: AnyPublisher<StateMachineNode, Never> { get }
     var historyValueProvider: AnyPublisher<[SpeechToCommandInput], Never> { get }
     var bufferProvider: AnyPublisher<String, Never> { get }
     var lastCommandProvider: AnyPublisher<String, Never> { get }
+    
+    func start()
+    func reset()
+    func stop()
+    func handleActionFor(_ value: String) -> String?
 }
 
 class SpeechToCommandManager: SpeechToCommandManagerType {

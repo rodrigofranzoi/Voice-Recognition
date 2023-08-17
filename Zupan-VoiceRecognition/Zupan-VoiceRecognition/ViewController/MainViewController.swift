@@ -9,8 +9,10 @@ import Foundation
 import Combine
 import UIKit
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     
+    private let router: MainRouterType
+
     private var speechToCommand: SpeechToCommandManagerType
     private var cancellables = Set<AnyCancellable>()
     
@@ -76,8 +78,10 @@ class MainViewController: UIViewController {
         return view
     }()
     
-    init(speechToCommand: SpeechToCommandManagerType) {
+    init(router: MainRouterType,
+         speechToCommand: SpeechToCommandManagerType) {
         self.speechToCommand = speechToCommand
+        self.router = router
         super.init(nibName: nil, bundle: nil)
     }
     

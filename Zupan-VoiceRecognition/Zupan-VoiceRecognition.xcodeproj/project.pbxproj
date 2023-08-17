@@ -10,6 +10,8 @@
 		C22D67A12A8E10B200B2C5EE /* StateMachineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67A02A8E10B200B2C5EE /* StateMachineModel.swift */; };
 		C22D67A32A8E163F00B2C5EE /* stateMachineDescription-en_US.json in Resources */ = {isa = PBXBuildFile; fileRef = C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en_US.json */; };
 		C22D67A52A8E1E2C00B2C5EE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67A42A8E1E2C00B2C5EE /* Constants.swift */; };
+		C22D67AA2A8E595E00B2C5EE /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67A92A8E595E00B2C5EE /* MainRouter.swift */; };
+		C22D67AC2A8E5D2100B2C5EE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67AB2A8E5D2100B2C5EE /* Router.swift */; };
 		C2AE74AF2A8BC22B00C1341D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74AE2A8BC22B00C1341D /* AppDelegate.swift */; };
 		C2AE74B12A8BC22B00C1341D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74B02A8BC22B00C1341D /* SceneDelegate.swift */; };
 		C2AE74B82A8BC22D00C1341D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2AE74B72A8BC22D00C1341D /* Assets.xcassets */; };
@@ -45,6 +47,8 @@
 		C22D67A02A8E10B200B2C5EE /* StateMachineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachineModel.swift; sourceTree = "<group>"; };
 		C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en_US.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "stateMachineDescription-en_US.json"; sourceTree = "<group>"; };
 		C22D67A42A8E1E2C00B2C5EE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C22D67A92A8E595E00B2C5EE /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		C22D67AB2A8E5D2100B2C5EE /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		C2AE74AB2A8BC22B00C1341D /* Zupan-VoiceRecognition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zupan-VoiceRecognition.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2AE74AE2A8BC22B00C1341D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2AE74B02A8BC22B00C1341D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 			children = (
 				C2AE74AE2A8BC22B00C1341D /* AppDelegate.swift */,
 				C2AE74B02A8BC22B00C1341D /* SceneDelegate.swift */,
+				C22D67A92A8E595E00B2C5EE /* MainRouter.swift */,
 				C2AE74EF2A8D153600C1341D /* Extensions */,
 				C2AE74E02A8BCBC100C1341D /* Model */,
 				C22D67A62A8E57E800B2C5EE /* Services */,
@@ -156,6 +161,7 @@
 			children = (
 				C2AE74EB2A8CE07B00C1341D /* SpeechToCommandInput.swift */,
 				C22D67A02A8E10B200B2C5EE /* StateMachineModel.swift */,
+				C22D67AB2A8E5D2100B2C5EE /* Router.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -324,9 +330,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C22D67AC2A8E5D2100B2C5EE /* Router.swift in Sources */,
 				C2AE74AF2A8BC22B00C1341D /* AppDelegate.swift in Sources */,
 				C2AE74B12A8BC22B00C1341D /* SceneDelegate.swift in Sources */,
 				C2AE74DF2A8BCB9200C1341D /* SpeechRecognizerProvider.swift in Sources */,
+				C22D67AA2A8E595E00B2C5EE /* MainRouter.swift in Sources */,
 				C2AE74EA2A8CC79200C1341D /* SpeechToCommandManager.swift in Sources */,
 				C2AE74E72A8BCC8900C1341D /* MainViewController.swift in Sources */,
 				C22D67A12A8E10B200B2C5EE /* StateMachineModel.swift in Sources */,

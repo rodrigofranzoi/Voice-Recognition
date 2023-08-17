@@ -10,10 +10,10 @@ import Speech
 import Combine
 
 protocol SpeechRecognizerProviderType {
+    var valueReceived: AnyPublisher<String, SpeechRecognizerError> { get }
+    
     func start() -> AnyPublisher<Void, SpeechRecognizerError>
     func stop()
-    
-    var valueReceived: AnyPublisher<String, SpeechRecognizerError> { get }
 }
 
 enum SpeechRecognizerError: Error {
