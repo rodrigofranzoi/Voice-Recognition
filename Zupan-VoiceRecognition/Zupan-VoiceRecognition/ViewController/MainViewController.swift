@@ -23,7 +23,7 @@ final class MainViewController: UIViewController {
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(self, action: #selector(buttonClickStart), for: .touchUpInside)
-        view.setTitle("Start Speech", for: .normal)
+        view.setTitle(Tr.startButton, for: .normal)
         view.widthAnchor.constraint(equalToConstant: 150).isActive = true
         return view
     }()
@@ -35,7 +35,7 @@ final class MainViewController: UIViewController {
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(self, action: #selector(buttonClickStop), for: .touchUpInside)
-        view.setTitle("Stop", for: .normal)
+        view.setTitle(Tr.stopButton, for: .normal)
         view.widthAnchor.constraint(equalToConstant: 150).isActive = true
         return view
     }()
@@ -46,7 +46,7 @@ final class MainViewController: UIViewController {
         view.layer.cornerRadius = 5
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = "Commands"
+        view.text = Tr.commands
         view.textColor = .white
         view.widthAnchor.constraint(equalToConstant: 150).isActive = true
         view.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -127,7 +127,7 @@ final class MainViewController: UIViewController {
             .lastCommandProvider
             .receive(on: RunLoop.main)
             .sink { command in
-                self.lastCommandLabel.text = command.isEmpty ? "empty" : command
+                self.lastCommandLabel.text = command.isEmpty ? Tr.empty : command
             }.store(in: &cancellables)
         
         
