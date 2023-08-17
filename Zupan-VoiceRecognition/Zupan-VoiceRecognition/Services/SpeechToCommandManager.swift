@@ -55,9 +55,9 @@ class SpeechToCommandManager: SpeechToCommandManagerType {
             self.history.append(newCommand)
         }
         manager.stop()
-        cancellables.forEach { $0.cancel() }
         state = nil
         buff.removeAll()
+        cancellables.forEach { $0.cancel() }
     }
     
     public func reset() {

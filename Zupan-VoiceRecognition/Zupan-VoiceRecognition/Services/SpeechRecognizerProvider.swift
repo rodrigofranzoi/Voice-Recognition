@@ -24,17 +24,15 @@ enum SpeechRecognizerError: Error {
 }
 
 class SpeechRecognizerProvider: NSObject, SpeechRecognizerProviderType, SFSpeechRecognizerDelegate {
+    public let locale: Locale
     
     private var audioEngine: AVAudioEngine?
     private var speechRecognizer: SFSpeechRecognizer?
     private var request: SFSpeechAudioBufferRecognitionRequest?
     private var task: SFSpeechRecognitionTask?
-    
-    public let locale: Locale
-    
     private let recognitionSubject = PassthroughSubject<String, SpeechRecognizerError>()
     
-    init(locale: Locale = .init(identifier: "en-US")) {
+    init(locale: Locale = .init(identifier: "en_US")) {
         self.locale = locale
     }
 

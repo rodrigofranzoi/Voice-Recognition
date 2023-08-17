@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C2290B192A8E679B0044ACDE /* stateMachineDescription-pt_BR.json in Sources */ = {isa = PBXBuildFile; fileRef = C2290B182A8E679B0044ACDE /* stateMachineDescription-pt_BR.json */; };
+		C2290B1B2A8E6C8F0044ACDE /* stateMachineDescription-pt_BR.json in Resources */ = {isa = PBXBuildFile; fileRef = C2290B1A2A8E6C8F0044ACDE /* stateMachineDescription-pt_BR.json */; };
 		C22D67A12A8E10B200B2C5EE /* StateMachineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67A02A8E10B200B2C5EE /* StateMachineModel.swift */; };
 		C22D67A32A8E163F00B2C5EE /* stateMachineDescription-en_US.json in Resources */ = {isa = PBXBuildFile; fileRef = C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en_US.json */; };
 		C22D67A52A8E1E2C00B2C5EE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67A42A8E1E2C00B2C5EE /* Constants.swift */; };
@@ -45,7 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C2290B182A8E679B0044ACDE /* stateMachineDescription-pt_BR.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "stateMachineDescription-pt_BR.json"; sourceTree = "<group>"; };
+		C2290B1A2A8E6C8F0044ACDE /* stateMachineDescription-pt_BR.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "stateMachineDescription-pt_BR.json"; sourceTree = "<group>"; };
 		C22D67A02A8E10B200B2C5EE /* StateMachineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachineModel.swift; sourceTree = "<group>"; };
 		C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en_US.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "stateMachineDescription-en_US.json"; sourceTree = "<group>"; };
 		C22D67A42A8E1E2C00B2C5EE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -173,7 +173,7 @@
 			children = (
 				C2AE74B72A8BC22D00C1341D /* Assets.xcassets */,
 				C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en_US.json */,
-				C2290B182A8E679B0044ACDE /* stateMachineDescription-pt_BR.json */,
+				C2290B1A2A8E6C8F0044ACDE /* stateMachineDescription-pt_BR.json */,
 				C22D67A42A8E1E2C00B2C5EE /* Constants.swift */,
 			);
 			path = Resources;
@@ -307,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2AE74BB2A8BC22D00C1341D /* LaunchScreen.storyboard in Resources */,
+				C2290B1B2A8E6C8F0044ACDE /* stateMachineDescription-pt_BR.json in Resources */,
 				C22D67A32A8E163F00B2C5EE /* stateMachineDescription-en_US.json in Resources */,
 				C2AE74B82A8BC22D00C1341D /* Assets.xcassets in Resources */,
 			);
@@ -341,7 +342,6 @@
 				C2AE74EA2A8CC79200C1341D /* SpeechToCommandManager.swift in Sources */,
 				C2AE74E72A8BCC8900C1341D /* MainViewController.swift in Sources */,
 				C22D67A12A8E10B200B2C5EE /* StateMachineModel.swift in Sources */,
-				C2290B192A8E679B0044ACDE /* stateMachineDescription-pt_BR.json in Sources */,
 				C2AE74EE2A8D14CD00C1341D /* AnyPublisher+Extensions.swift in Sources */,
 				C2AE74EC2A8CE07B00C1341D /* SpeechToCommandInput.swift in Sources */,
 				C22D67A52A8E1E2C00B2C5EE /* Constants.swift in Sources */,
