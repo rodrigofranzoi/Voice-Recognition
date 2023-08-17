@@ -2,3 +2,11 @@
 "stop_speech" = "Halt";
 "empty" = "empty";
 "commands" = "Commands";
+"noSpeechPermissionTitle" = "You don't have permission to use the Speech";
+"noSpeechPermissionBody" = "Please, go to settings and enable the functionality.";
+"askPermissionTitle" = "Speech permission";
+"askPermissionBody" = "Would you give the app permission to use Speech functionality?";
+
+"openSettings" = "Open Settings";
+"continue" = "Continue";
+"cancel" = "Cancel";

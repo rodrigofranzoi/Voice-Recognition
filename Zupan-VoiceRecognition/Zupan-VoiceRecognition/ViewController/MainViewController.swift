@@ -101,6 +101,11 @@ final class MainViewController: UIViewController {
         setupConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.router.checkForPermissions()
+    }
+    
     @objc func buttonClickStart() {
         print("Button Start")
         self.speechToCommand.start()
@@ -146,10 +151,7 @@ final class MainViewController: UIViewController {
             .sink { state in
                 print("✅ State Changed", state.command)
             }.store(in: &cancellables)
-        
-        
     }
-    
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([

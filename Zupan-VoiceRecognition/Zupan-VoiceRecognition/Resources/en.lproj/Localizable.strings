@@ -2,3 +2,14 @@
 "stop_speech" = "Stop";
 "empty" = "empty";
 "commands" = "Commands";
+"noSpeechPermissionTitle" = "🔇 You don't have permission to use the Speech";
+"noSpeechPermissionBody" = "Please, go to settings and enable the Speech Recognition.";
+"askSpeechPermissionTitle" = "🔈 Speech permission";
+"askSpeechPermissionBody" = "Would you give the app permission to use Speech Recognition functionality?";
+"openSettings" = "⚙️ Open Settings";
+"continue" = "Continue";
+"cancel" = "Cancel";
+"noMicPermissionTitle" = "🤐 You don't have permission to use the Microphone";
+"noMicPermissionBody" = "Please, go to settings and enable the Microphone.";
+"askMicPermissionTitle" = "🎤 Microphone permission";
+"askMicPermissionBody" = "Would you give the app permission to use Microphone functionality?";

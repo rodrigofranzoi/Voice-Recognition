@@ -14,6 +14,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     // Main Dependencies
     var speechToCommandManager: SpeechToCommandManagerType?
+    var speechPermissionUseCase: SpeechPermissionUseCaseType?
+    var microphonePermissionUseCase: MicrophonePermissionUseCaseType?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -34,11 +36,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let manager = SpeechRecognizerProvider(locale: locale)
         let speechToCommand = SpeechToCommandManager(manager: manager, stateMachine: stateMachineDescription)
+        let speechPermissionUseCase = SpeechPermissionUseCase()
+        let microphonePermissionUseCase = MicrophonePermissionUseCase()
+        
         self.speechToCommandManager = speechToCommand
+        self.speechPermissionUseCase = speechPermissionUseCase
+        self.microphonePermissionUseCase = microphonePermissionUseCase
         
         let navController = UINavigationController()
         
-        self.mainRouter = MainRouter(navigationController: navController, speechToCommandManager: speechToCommand)
+        self.mainRouter = MainRouter(navigationController: navController,
+                                     speechToCommandManager: speechToCommand,
+                                     speechPermissionUseCase: speechPermissionUseCase,
+                                     microphonePermissionUseCase: microphonePermissionUseCase)
         self.mainRouter?.start()
         
         window?.rootViewController = navController

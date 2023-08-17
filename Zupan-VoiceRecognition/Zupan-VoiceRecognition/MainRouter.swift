@@ -9,33 +9,36 @@ import Foundation
 import UIKit
 
 protocol MainRouterType: Router {
-    func askForMicrophonePermission()
+    func askForMicrophonePermissionDialog()
+    func microphoneNotAvailableDialog()
+    func askForSpeechPermissionDialog()
+    func speechNotAvailableDialog()
+    func checkForPermissions()
 }
 
 class MainRouter: MainRouterType {
     var navigationController: UINavigationController
     
     private var speechToCommandManager: SpeechToCommandManagerType
-    private var factory: MainRouterFactoryType
+    private var speechPermissionUseCase: SpeechPermissionUseCaseType
+    private var microphonePermissionUseCase: MicrophonePermissionUseCaseType
     
     init(
         navigationController: UINavigationController,
         speechToCommandManager: SpeechToCommandManagerType,
-        factory: MainRouterFactoryType = MainRouterFactory()
+        speechPermissionUseCase: SpeechPermissionUseCase,
+        microphonePermissionUseCase: MicrophonePermissionUseCaseType
     ) {
         self.navigationController = navigationController
         self.speechToCommandManager = speechToCommandManager
-        self.factory = factory
-    }
-    
-    func askForMicrophonePermission() {
-        let vc = factory.createNoPermissionView(router: self)
-        navigationController.present(vc, animated: true)
+        self.speechPermissionUseCase = speechPermissionUseCase
+        self.microphonePermissionUseCase = microphonePermissionUseCase
     }
     
     func start() {
-        let vc = factory.createMainView(router: self, speechToCommand: speechToCommandManager)
+        let vc = MainViewController(router: self, speechToCommand: speechToCommandManager)
         navigationController.pushViewController(vc, animated: false)
+//        checkForPermissions()
     }
     
     func dismiss() {
@@ -45,21 +48,98 @@ class MainRouter: MainRouterType {
     func backToRoot() {
         navigationController.popToRootViewController(animated: true)
     }
-}
+    
+    func askForMicrophonePermissionDialog() {
+        let vc = DialogViewController(
+            router: self,
+            title: Tr.askMicPermissionTitle,
+            body: Tr.askMicPermissionBody,
+            buttons: [
+                .init(title: Tr.continueString, action: askForMicrophonePermission),
+                .init(title: Tr.cancel, action: dismiss)
+            ]
+        )
 
-protocol MainRouterFactoryType {
-    func createMainView(router: MainRouterType, speechToCommand: SpeechToCommandManagerType) -> UIViewController
-    func createNoPermissionView(router: MainRouterType) -> UIViewController
-}
-
-struct MainRouterFactory: MainRouterFactoryType {
-    func createNoPermissionView(router: MainRouterType) -> UIViewController {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .red
-        return vc
+        navigationController.present(vc, animated: true)
     }
     
-    func createMainView(router: MainRouterType, speechToCommand: SpeechToCommandManagerType) -> UIViewController {
-        return MainViewController(router: router, speechToCommand: speechToCommand)
+    func microphoneNotAvailableDialog() {
+        let vc = DialogViewController(
+            router: self,
+            title: Tr.noSpeechPermissionTitle,
+            body: Tr.noSpeechPermissionBody,
+            buttons: [
+                .init(title: Tr.openSettings, action: openSettings),
+                .init(title: Tr.cancel, action: dismiss)
+            ]
+        )
+        
+        navigationController.present(vc, animated: true)
+    }
+    
+    func askForSpeechPermissionDialog() {
+        let vc = DialogViewController(
+            router: self,
+            title: Tr.askSpeechPermissionTitle,
+            body: Tr.askSpeechPermissionBody,
+            buttons: [
+                .init(title: Tr.continueString, action: askForSpeechPermission),
+                .init(title: Tr.cancel, action: dismiss)
+            ]
+        )
+
+        navigationController.present(vc, animated: true)
+    }
+    
+    func speechNotAvailableDialog() {
+        let vc = DialogViewController(
+            router: self,
+            title: Tr.askSpeechPermissionTitle,
+            body: Tr.askSpeechPermissionBody,
+            buttons: [
+                .init(title: Tr.continueString, action: openSettings),
+                .init(title: Tr.cancel, action: dismiss)
+            ]
+        )
+
+        navigationController.present(vc, animated: true)
+    }
+    
+    
+    
+    private func openSettings() {
+        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+        dismiss()
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
+    private func askForMicrophonePermission() {
+        dismiss()
+        microphonePermissionUseCase.requestAuthorization { _ in
+            DispatchQueue.main.async {
+                self.checkForPermissions()
+            }
+        }
+    }
+    
+    private func askForSpeechPermission() {
+        dismiss()
+        speechPermissionUseCase.requestAuthorization { _ in
+            DispatchQueue.main.async {
+                self.checkForPermissions()
+            }
+        }
+    }
+    
+    public func checkForPermissions() {
+        let micPermission = microphonePermissionUseCase.status
+        let speechPermission = speechPermissionUseCase.status
+        switch (micPermission, speechPermission) {
+        case ( .undetermined, _): askForMicrophonePermissionDialog()
+        case ( _, .notDetermined): askForSpeechPermissionDialog()
+        case ( .denied, _): microphoneNotAvailableDialog()
+        case ( _, .denied): speechNotAvailableDialog()
+        default: break
+        }
     }
 }
