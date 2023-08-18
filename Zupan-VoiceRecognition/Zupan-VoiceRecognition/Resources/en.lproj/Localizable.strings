@@ -13,3 +13,4 @@
 "noMicPermissionBody" = "Please, go to settings and enable the Microphone.";
 "askMicPermissionTitle" = "🎤 Microphone permission";
 "askMicPermissionBody" = "Would you give the app permission to use Microphone functionality?";
+"history" = "History";

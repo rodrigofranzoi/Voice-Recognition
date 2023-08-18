@@ -11,20 +11,33 @@ import UIKit
 
 final class MainViewController: UIViewController {
     
+    enum State {
+        case listening
+        case idle
+        case blocked
+    }
+    
     private let router: MainRouterType
 
     private var speechToCommand: SpeechToCommandManagerType
+    private var speechRecognizer: SpeechRecognizerProviderType
+    
+    private var viewCancellables = Set<AnyCancellable>()
     private var cancellables = Set<AnyCancellable>()
+    
+    @Published private var state: State = .idle
     
     lazy var startButton: UIButton = {
         let view = UIButton()
         view.backgroundColor = .systemBlue
-        view.layer.cornerRadius = 5
+        view.layer.cornerRadius = 100
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(self, action: #selector(buttonClickStart), for: .touchUpInside)
         view.setTitle(Tr.startButton, for: .normal)
-        view.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        view.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        view.layer.zPosition = 2
         return view
     }()
     
@@ -36,23 +49,36 @@ final class MainViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(self, action: #selector(buttonClickStop), for: .touchUpInside)
         view.setTitle(Tr.stopButton, for: .normal)
-        view.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 50).isActive = true
         return view
     }()
     
-    lazy var lastCommandLabel: UILabel = {
-        let view = UILabel()
-        view.backgroundColor = .systemGreen
+    lazy var historyButton: UIButton = {
+        let view = UIButton()
+        view.backgroundColor = .systemGray
+        view.titleLabel?.textColor = .white
         view.layer.cornerRadius = 5
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = Tr.commands
-        view.textColor = .white
-        view.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        view.addTarget(self, action: #selector(buttonClickStop), for: .touchUpInside)
+        view.setTitle(Tr.history, for: .normal)
         view.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        view.textAlignment = .center
         return view
     }()
+    
+//    lazy var lastCommandLabel: UILabel = {
+//        let view = UILabel()
+//        view.backgroundColor = .systemGreen
+//        view.layer.cornerRadius = 5
+//        view.layer.masksToBounds = true
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.text = Tr.commands
+//        view.textColor = .white
+//        view.widthAnchor.constraint(equalToConstant: 150).isActive = true
+//        view.heightAnchor.constraint(equalToConstant: 50).isActive = true
+//        view.textAlignment = .center
+//        return view
+//    }()
     
     lazy var bufferLabel: UILabel = {
         let view = UILabel()
@@ -62,7 +88,6 @@ final class MainViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.text = ""
         view.textColor = .white
-        view.widthAnchor.constraint(equalToConstant: 150).isActive = true
         view.heightAnchor.constraint(equalToConstant: 50).isActive = true
         view.textAlignment = .center
         return view
@@ -71,16 +96,19 @@ final class MainViewController: UIViewController {
     lazy var stackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.alignment = .center
         view.distribution = .equalCentering
         view.axis = .vertical
         view.spacing = 20
+        view.alignment = .fill
+        view.layer.zPosition = 2
         return view
     }()
     
     init(router: MainRouterType,
-         speechToCommand: SpeechToCommandManagerType) {
+         speechToCommand: SpeechToCommandManagerType,
+         speechRecognizer: SpeechRecognizerProviderType) {
         self.speechToCommand = speechToCommand
+        self.speechRecognizer = speechRecognizer
         self.router = router
         super.init(nibName: nil, bundle: nil)
     }
@@ -91,40 +119,100 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        stackView.addArrangedSubview(lastCommandLabel)
+
         stackView.addArrangedSubview(bufferLabel)
-        stackView.addArrangedSubview(startButton)
         stackView.addArrangedSubview(stopButton)
+        stackView.addArrangedSubview(historyButton)
         
+        view.addSubview(startButton)
         view.addSubview(stackView)
+        view.backgroundColor = .white
         setupConstraints()
+        observeState()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.router.checkForPermissions()
+        self.router.checkForPermissions(completion: { _ in })
     }
     
     @objc func buttonClickStart() {
         print("Button Start")
+        self.state = .listening
         self.speechToCommand.start()
         self.observeValues()
     }
     
     @objc func buttonClickStop() {
         print("Button Stop")
+        self.state = .idle
         self.speechToCommand.stop()
         self.cancellables.forEach { cancellable in
             cancellable.cancel()
         }
     }
 
+    @objc func showHistory() {
+        self.state = .idle
+        self.speechToCommand.stop()
+        self.router.showHistory()
+    }
+    
+    private func observeState() {
+        $state
+            .receive(on: RunLoop.main)
+            .sink { state in
+                switch state {
+                case .idle:
+                    self.startButton.setTitle(Tr.startButton, for: .normal)
+                    self.startButton.backgroundColor = .systemBlue
+                    self.stopButton.isHidden = true
+                    self.bufferLabel.isHidden = true
+                case .blocked:
+                    self.startButton.setTitle("Error", for: .normal)
+                    self.startButton.backgroundColor = .systemRed
+                    self.stopButton.isHidden = true
+                    self.bufferLabel.isHidden = true
+                case .listening:
+                    self.startButton.setTitle(Tr.empty, for: .normal)
+                    self.startButton.backgroundColor = .systemGreen
+                    self.stopButton.isHidden = false
+                    self.bufferLabel.isHidden = false
+                }
+            }.store(in: &viewCancellables)
+    }
+    
+    private func createCircle() {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 100
+        view.layer.zPosition = 1
+        view.layer.shadowColor = UIColor.systemGreen.cgColor
+        view.layer.shadowRadius = 10.0
+        view.layer.shadowOpacity = 0.3
+        view.backgroundColor = .white
+        view.isUserInteractionEnabled = false
+        
+        self.view.addSubview(view)
+        
+        view.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        view.centerXAnchor.constraint(equalTo: self.startButton.centerXAnchor).isActive = true
+        view.centerYAnchor.constraint(equalTo: self.startButton.centerYAnchor).isActive = true
+        
+        UIView.animate(withDuration: 2, animations: {
+            view.transform = CGAffineTransform(scaleX: 2, y: 2)
+        }) { (finished) in
+            view.removeFromSuperview()
+        }
+    }
+    
     private func observeValues() {
         speechToCommand
             .bufferProvider
             .receive(on: RunLoop.main)
             .sink { buffer in
+                self.createCircle()
                 self.bufferLabel.text = buffer
             }.store(in: &cancellables)
         
@@ -132,7 +220,8 @@ final class MainViewController: UIViewController {
             .lastCommandProvider
             .receive(on: RunLoop.main)
             .sink { command in
-                self.lastCommandLabel.text = command.isEmpty ? Tr.empty : command
+                self.createCircle()
+                self.startButton.setTitle(command.isEmpty ? Tr.empty : command, for: .normal)
             }.store(in: &cancellables)
         
         
@@ -155,8 +244,11 @@ final class MainViewController: UIViewController {
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            startButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -56)
         ])
     }
 }

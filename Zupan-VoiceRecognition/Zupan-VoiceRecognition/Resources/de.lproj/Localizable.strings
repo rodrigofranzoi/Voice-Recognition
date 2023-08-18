@@ -6,7 +6,7 @@
 "noSpeechPermissionBody" = "Please, go to settings and enable the functionality.";
 "askPermissionTitle" = "Speech permission";
 "askPermissionBody" = "Would you give the app permission to use Speech functionality?";
-
 "openSettings" = "Open Settings";
 "continue" = "Continue";
 "cancel" = "Cancel";
+"history" = "History";

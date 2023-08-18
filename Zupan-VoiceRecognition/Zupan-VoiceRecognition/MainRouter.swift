@@ -13,30 +13,34 @@ protocol MainRouterType: Router {
     func microphoneNotAvailableDialog()
     func askForSpeechPermissionDialog()
     func speechNotAvailableDialog()
-    func checkForPermissions()
+    func showHistory()
+    func checkForPermissions(completion: @escaping (Bool) -> Void)
 }
 
 class MainRouter: MainRouterType {
     var navigationController: UINavigationController
     
     private var speechToCommandManager: SpeechToCommandManagerType
+    private var speechRecognizerProvider: SpeechRecognizerProviderType
     private var speechPermissionUseCase: SpeechPermissionUseCaseType
     private var microphonePermissionUseCase: MicrophonePermissionUseCaseType
     
     init(
         navigationController: UINavigationController,
         speechToCommandManager: SpeechToCommandManagerType,
+        speechRecognizerProvider: SpeechRecognizerProviderType,
         speechPermissionUseCase: SpeechPermissionUseCase,
         microphonePermissionUseCase: MicrophonePermissionUseCaseType
     ) {
         self.navigationController = navigationController
         self.speechToCommandManager = speechToCommandManager
+        self.speechRecognizerProvider = speechRecognizerProvider
         self.speechPermissionUseCase = speechPermissionUseCase
         self.microphonePermissionUseCase = microphonePermissionUseCase
     }
     
     func start() {
-        let vc = MainViewController(router: self, speechToCommand: speechToCommandManager)
+        let vc = MainViewController(router: self, speechToCommand: speechToCommandManager, speechRecognizer: speechRecognizerProvider)
         navigationController.pushViewController(vc, animated: false)
     }
     
@@ -104,7 +108,21 @@ class MainRouter: MainRouterType {
         navigationController.present(vc, animated: true)
     }
     
+    func showHistory() {
+        
+    }
     
+    public func checkForPermissions(completion: @escaping (Bool) -> Void) {
+        let micPermission = microphonePermissionUseCase.status
+        let speechPermission = speechPermissionUseCase.status
+        switch (micPermission, speechPermission) {
+        case ( .undetermined, _): askForMicrophonePermissionDialog()
+        case ( _, .notDetermined): askForSpeechPermissionDialog()
+        case ( .denied, _): microphoneNotAvailableDialog()
+        case ( _, .denied): speechNotAvailableDialog()
+        default: completion(true)
+        }
+    }
     
     private func openSettings() {
         guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
@@ -116,7 +134,7 @@ class MainRouter: MainRouterType {
         dismiss()
         microphonePermissionUseCase.requestAuthorization { _ in
             DispatchQueue.main.async {
-                self.checkForPermissions()
+                self.checkForPermissions(completion: { _ in })
             }
         }
     }
@@ -125,20 +143,8 @@ class MainRouter: MainRouterType {
         dismiss()
         speechPermissionUseCase.requestAuthorization { _ in
             DispatchQueue.main.async {
-                self.checkForPermissions()
+                self.checkForPermissions(completion: { _ in })
             }
-        }
-    }
-    
-    public func checkForPermissions() {
-        let micPermission = microphonePermissionUseCase.status
-        let speechPermission = speechPermissionUseCase.status
-        switch (micPermission, speechPermission) {
-        case ( .undetermined, _): askForMicrophonePermissionDialog()
-        case ( _, .notDetermined): askForSpeechPermissionDialog()
-        case ( .denied, _): microphoneNotAvailableDialog()
-        case ( _, .denied): speechNotAvailableDialog()
-        default: break
         }
     }
 }

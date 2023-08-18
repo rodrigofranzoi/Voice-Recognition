@@ -13,6 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var mainRouter: MainRouterType?
 
     // Main Dependencies
+    var speechRecognizerProvider: SpeechRecognizerProviderType?
     var speechToCommandManager: SpeechToCommandManagerType?
     var speechPermissionUseCase: SpeechPermissionUseCaseType?
     var microphonePermissionUseCase: MicrophonePermissionUseCaseType?
@@ -34,12 +35,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             fatalError("Language not available")
         }
 
-        let manager = SpeechRecognizerProvider(locale: locale)
-        let speechToCommand = SpeechToCommandManager(manager: manager, stateMachine: stateMachineDescription)
+        let speechRecognizerProvider = SpeechRecognizerProvider(locale: locale)
+        let speechToCommand = SpeechToCommandManager(manager: speechRecognizerProvider, stateMachine: stateMachineDescription)
         let speechPermissionUseCase = SpeechPermissionUseCase()
         let microphonePermissionUseCase = MicrophonePermissionUseCase()
         
         self.speechToCommandManager = speechToCommand
+        self.speechRecognizerProvider = speechRecognizerProvider
         self.speechPermissionUseCase = speechPermissionUseCase
         self.microphonePermissionUseCase = microphonePermissionUseCase
         
@@ -47,6 +49,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.mainRouter = MainRouter(navigationController: navController,
                                      speechToCommandManager: speechToCommand,
+                                     speechRecognizerProvider: speechRecognizerProvider,
                                      speechPermissionUseCase: speechPermissionUseCase,
                                      microphonePermissionUseCase: microphonePermissionUseCase)
         self.mainRouter?.start()
