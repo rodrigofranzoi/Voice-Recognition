@@ -7,7 +7,7 @@
 "askSpeechPermissionBody" = "Você permite o aplicativo utlizar a funcionalidade de Reconhecimento de Fala?";
 "openSettings" = "⚙️ Abrir as configurações";
 "continue" = "Continuar";
-"cancel" = "Cancela";
+"cancel" = "Cancelar";
 "noMicPermissionTitle" = "🤐 Você não tem permissão para utilizar o microfone";
 "noMicPermissionBody" = "Por favor, habilite Microfone nas configurações do aplicativo";
 "askMicPermissionTitle" = "🎤 Permissão para utilizar o microfone";
@@ -15,3 +15,5 @@
 "history" = "Histórico";
 "noHistory" = "Você ainda não falou nenhum comando";
 "dismiss" = "Voltar";
+"rulesTitle" = "Regras para o jogo:";
+"rulesDescription" = "Comandos Disponíveis:\ncontar, código: ✅ Aceita: [contar, código, voltar, resetar] 🗣 Parâmetros: [0-9]\nback, reset: ✅ Aceita: [contar, código, voltar, resetar] 🗣 Parâmetros: none";

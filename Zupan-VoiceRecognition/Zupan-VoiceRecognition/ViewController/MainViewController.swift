@@ -79,6 +79,39 @@ final class MainViewController: UIViewController {
         return view
     }()
     
+    lazy var rulesStackView: UIStackView = {
+        let view = UIStackView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.distribution = .equalSpacing
+        view.axis = .vertical
+        view.spacing = 16
+        view.alignment = .fill
+        view.layer.zPosition = 2
+        return view
+    }()
+    
+    lazy var titleLabel: UILabel = {
+        let view = UILabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.text = Tr.rulesTitle
+        view.textColor = .black
+        view.font = UIFont.systemFont(ofSize: 32.0, weight: .bold)
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        return view
+    }()
+    
+    lazy var descriptionLabel: UILabel = {
+        let view = UILabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.text = Tr.rulesDescription
+        view.textColor = .black
+        view.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        view.textAlignment = .left
+        view.numberOfLines = 0
+        return view
+    }()
+    
     lazy var stackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -110,6 +143,10 @@ final class MainViewController: UIViewController {
         stackView.addArrangedSubview(stopButton)
         stackView.addArrangedSubview(historyButton)
         
+        rulesStackView.addArrangedSubview(titleLabel)
+        rulesStackView.addArrangedSubview(descriptionLabel)
+        
+        view.addSubview(rulesStackView)
         view.addSubview(startButton)
         view.addSubview(stackView)
         view.backgroundColor = .white
@@ -123,14 +160,12 @@ final class MainViewController: UIViewController {
     }
     
     @objc func buttonClickStart() {
-        print("Button Start")
         self.state = .listening
         self.speechToCommand.start()
         self.observeValues()
     }
     
     @objc func buttonClickStop() {
-        print("Button Stop")
         self.state = .idle
         self.speechToCommand.stop()
         self.cancellables.forEach { cancellable in
@@ -139,8 +174,6 @@ final class MainViewController: UIViewController {
     }
 
     @objc func showHistory() {
-//        self.state = .idle
-//        self.speechToCommand.stop()
         self.router.showHistory()
     }
     
@@ -209,23 +242,6 @@ final class MainViewController: UIViewController {
                 self.createCircle()
                 self.startButton.setTitle(command.isEmpty ? Tr.empty : command, for: .normal)
             }.store(in: &cancellables)
-        
-        
-        speechToCommand
-            .historyValueProvider
-            .receive(on: RunLoop.main)
-            .sink { history in
-                history.forEach { input in
-                    print("✅ History:", input.value)
-                }
-            }.store(in: &cancellables)
-        
-        speechToCommand
-            .stateProvider
-            .receive(on: RunLoop.main)
-            .sink { state in
-                print("✅ State Changed", state.command)
-            }.store(in: &cancellables)
     }
 
     private func setupConstraints() {
@@ -234,7 +250,10 @@ final class MainViewController: UIViewController {
             startButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -56)
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -56),
+            rulesStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 56),
+            rulesStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            rulesStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
     }
 }

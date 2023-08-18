@@ -26,6 +26,8 @@ struct Translations {
     static let history = String(localized: "history")
     static let noHistory = String(localized: "noHistory")
     static let dismiss = String(localized: "dismiss")
+    static let rulesTitle = String(localized: "rulesTitle")
+    static let rulesDescription = String(localized: "rulesDescription")
 }
 
 typealias Tr = Translations

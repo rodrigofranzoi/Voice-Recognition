@@ -32,7 +32,9 @@ final class HistoryViewController: UIViewController {
         view.textAlignment = .center
         view.text = Tr.noHistory
         view.layer.zPosition = 1
+        view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.widthAnchor.constraint(equalToConstant: 100).isActive = true
         return view
     }()
     
