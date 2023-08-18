@@ -56,9 +56,19 @@ final class DialogViewController: UIViewController {
     lazy var stackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.distribution = .equalCentering
+        view.distribution = .equalSpacing
         view.axis = .vertical
         view.spacing = 16
+        view.alignment = .fill
+        return view
+    }()
+    
+    lazy var buttonStackView: UIStackView = {
+        let view = UIStackView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.distribution = .equalCentering
+        view.axis = .vertical
+        view.spacing = 8
         view.alignment = .fill
         return view
     }()
@@ -81,14 +91,16 @@ final class DialogViewController: UIViewController {
         
         stackView.addArrangedSubview(viewTitle)
         stackView.addArrangedSubview(body)
+        stackView.addArrangedSubview(buttonStackView)
         
         buttons.forEach { button in
             let view = UIButton()
             view.setTitle(button.title, for: .normal)
             view.addAction(UIAction(handler: { _ in button.action() }), for: .touchUpInside)
             view.backgroundColor = .systemBlue
-            view.layer.cornerRadius = 5
-            stackView.addArrangedSubview(view)
+            view.layer.cornerRadius = 10
+            view.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+            buttonStackView.addArrangedSubview(view)
         }
         
         viewContainer.addSubview(stackView)

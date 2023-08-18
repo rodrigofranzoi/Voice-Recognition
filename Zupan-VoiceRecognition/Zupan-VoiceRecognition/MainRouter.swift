@@ -38,7 +38,6 @@ class MainRouter: MainRouterType {
     func start() {
         let vc = MainViewController(router: self, speechToCommand: speechToCommandManager)
         navigationController.pushViewController(vc, animated: false)
-//        checkForPermissions()
     }
     
     func dismiss() {
@@ -66,8 +65,8 @@ class MainRouter: MainRouterType {
     func microphoneNotAvailableDialog() {
         let vc = DialogViewController(
             router: self,
-            title: Tr.noSpeechPermissionTitle,
-            body: Tr.noSpeechPermissionBody,
+            title: Tr.noMicPermissionTitle,
+            body: Tr.noMicPermissionBody,
             buttons: [
                 .init(title: Tr.openSettings, action: openSettings),
                 .init(title: Tr.cancel, action: dismiss)
