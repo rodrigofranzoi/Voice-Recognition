@@ -15,6 +15,10 @@
 		C2290B2D2A8EC3B00044ACDE /* MicrophonePermissionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290B2C2A8EC3B00044ACDE /* MicrophonePermissionUseCase.swift */; };
 		C2290B322A8F7D1E0044ACDE /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290B312A8F7D1E0044ACDE /* HistoryViewController.swift */; };
 		C2290B362A8F8E070044ACDE /* stateMachineDescription-de_DE.json in Resources */ = {isa = PBXBuildFile; fileRef = C2290B352A8F8E070044ACDE /* stateMachineDescription-de_DE.json */; };
+		C2290B382A8FB10A0044ACDE /* SpeechRecognizerProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290B372A8FB10A0044ACDE /* SpeechRecognizerProviderMock.swift */; };
+		C2290B392A8FB6670044ACDE /* stateMachineDescription-en_US.json in Resources */ = {isa = PBXBuildFile; fileRef = C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en_US.json */; };
+		C2290B3A2A8FB6670044ACDE /* stateMachineDescription-pt_BR.json in Resources */ = {isa = PBXBuildFile; fileRef = C2290B1A2A8E6C8F0044ACDE /* stateMachineDescription-pt_BR.json */; };
+		C2290B3B2A8FB6670044ACDE /* stateMachineDescription-de_DE.json in Resources */ = {isa = PBXBuildFile; fileRef = C2290B352A8F8E070044ACDE /* stateMachineDescription-de_DE.json */; };
 		C22D67A12A8E10B200B2C5EE /* StateMachineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67A02A8E10B200B2C5EE /* StateMachineModel.swift */; };
 		C22D67A32A8E163F00B2C5EE /* stateMachineDescription-en_US.json in Resources */ = {isa = PBXBuildFile; fileRef = C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en_US.json */; };
 		C22D67A52A8E1E2C00B2C5EE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67A42A8E1E2C00B2C5EE /* Constants.swift */; };
@@ -64,6 +68,7 @@
 		C2290B2C2A8EC3B00044ACDE /* MicrophonePermissionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophonePermissionUseCase.swift; sourceTree = "<group>"; };
 		C2290B312A8F7D1E0044ACDE /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		C2290B352A8F8E070044ACDE /* stateMachineDescription-de_DE.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "stateMachineDescription-de_DE.json"; sourceTree = "<group>"; };
+		C2290B372A8FB10A0044ACDE /* SpeechRecognizerProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizerProviderMock.swift; sourceTree = "<group>"; };
 		C22D67A02A8E10B200B2C5EE /* StateMachineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachineModel.swift; sourceTree = "<group>"; };
 		C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en_US.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "stateMachineDescription-en_US.json"; sourceTree = "<group>"; };
 		C22D67A42A8E1E2C00B2C5EE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -165,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				C2AE74C52A8BC22D00C1341D /* Zupan_VoiceRecognitionTests.swift */,
+				C2290B372A8FB10A0044ACDE /* SpeechRecognizerProviderMock.swift */,
 			);
 			path = "Zupan-VoiceRecognitionTests";
 			sourceTree = "<group>";
@@ -346,6 +352,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2290B3A2A8FB6670044ACDE /* stateMachineDescription-pt_BR.json in Resources */,
+				C2290B3B2A8FB6670044ACDE /* stateMachineDescription-de_DE.json in Resources */,
+				C2290B392A8FB6670044ACDE /* stateMachineDescription-en_US.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +395,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2290B382A8FB10A0044ACDE /* SpeechRecognizerProviderMock.swift in Sources */,
 				C2AE74C62A8BC22D00C1341D /* Zupan_VoiceRecognitionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
