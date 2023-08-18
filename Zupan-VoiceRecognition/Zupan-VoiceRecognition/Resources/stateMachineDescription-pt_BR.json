@@ -24,7 +24,7 @@
             "command": "resetar",
             "nextCommands": ["contar", "código", "resetar", "voltar"],
             "acceptedParameters": [],
-            "action": "remove"
+            "action": "cancel"
         },
         {
             "command": "voltar",

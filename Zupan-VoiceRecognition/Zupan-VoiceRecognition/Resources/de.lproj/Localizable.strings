@@ -15,5 +15,5 @@
 "history" = "Geschichte";
 "noHistory" = "Sie haben noch keine Befehle gesprochen";
 "dismiss" = "Zurück";
-"rulesTitle" = "Regras para o jogo:";
-"rulesDescription" = "Comandos Disponíveis:\ncontar, código: ✅ Accepts: [contar, código, voltar, resetar] 🗣 Parâmetros: [0-9]\nback, reset: ✅ Accepts: [contar, código, voltar, resetar] 🗣 Parâmetros: none";
+"rulesTitle" = "Spielregeln:";
+"rulesDescription" = "Verfügbare Befehle:\nback, code: ✅ Akzeptiert: [count, code, back, reset] 🗣 Parameter: [0-9]\nback, reset: ✅ Akzeptiert: [count, code, back, reset] 🗣 Parameter: keine";

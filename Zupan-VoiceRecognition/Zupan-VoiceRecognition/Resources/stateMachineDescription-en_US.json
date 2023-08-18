@@ -24,7 +24,7 @@
             "command": "reset",
             "nextCommands": ["count", "code", "reset", "back"],
             "acceptedParameters": [],
-            "action": "remove"
+            "action": "cancel"
         },
         {
             "command": "back",

@@ -57,6 +57,7 @@ class SpeechToCommandManager: SpeechToCommandManagerType {
         }
         manager.stop()
         state = nil
+        lastCommand = nil
         buff.removeAll()
         cancellables.forEach { $0.cancel() }
     }
@@ -118,13 +119,13 @@ class SpeechToCommandManager: SpeechToCommandManagerType {
         } else if actualState.nextCommands.contains(value),
                let newState = self.stateMachine.commands.first(where: { $0.command == value }) {
             switch (actualState.action, newState.action) {
-            case (_, .store) :
+            case (_, .store):
                 if !buff.isEmpty {
                     let newCommand = SpeechToCommandInput(command: actualState.command, value: self.buff)
                     self.history.append(newCommand)
                 }
                 self.buff.removeAll()
-            case (.remove, .remove):
+            case (_, .remove):
                 if !history.isEmpty { history.removeLast() }
             default: break
             }

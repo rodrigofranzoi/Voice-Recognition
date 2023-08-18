@@ -26,4 +26,5 @@ struct StateMachineNode: Codable {
 enum StateMachineAction: String, Codable {
     case store = "store"
     case remove = "remove"
+    case cancel = "cancel"
 }
