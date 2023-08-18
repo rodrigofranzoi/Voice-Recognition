@@ -1,6 +1,6 @@
 ## Voice recognition app
 
-Languages available: 🏴󠁧󠁢󠁥󠁮󠁧󠁿 🇧🇷 🇩🇪
+Languages available: 🇺🇸 🇧🇷 🇩🇪
 
 Note: the commands will change according with the langugage.
 
