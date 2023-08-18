@@ -49,7 +49,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.mainRouter = MainRouter(navigationController: navController,
                                      speechToCommandManager: speechToCommand,
-                                     speechRecognizerProvider: speechRecognizerProvider,
                                      speechPermissionUseCase: speechPermissionUseCase,
                                      microphonePermissionUseCase: microphonePermissionUseCase)
         self.mainRouter?.start()

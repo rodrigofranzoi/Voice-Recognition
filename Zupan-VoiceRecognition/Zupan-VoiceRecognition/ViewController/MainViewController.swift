@@ -20,8 +20,6 @@ final class MainViewController: UIViewController {
     private let router: MainRouterType
 
     private var speechToCommand: SpeechToCommandManagerType
-    private var speechRecognizer: SpeechRecognizerProviderType
-    
     private var viewCancellables = Set<AnyCancellable>()
     private var cancellables = Set<AnyCancellable>()
     
@@ -124,10 +122,8 @@ final class MainViewController: UIViewController {
     }()
     
     init(router: MainRouterType,
-         speechToCommand: SpeechToCommandManagerType,
-         speechRecognizer: SpeechRecognizerProviderType) {
+         speechToCommand: SpeechToCommandManagerType) {
         self.speechToCommand = speechToCommand
-        self.speechRecognizer = speechRecognizer
         self.router = router
         super.init(nibName: nil, bundle: nil)
     }

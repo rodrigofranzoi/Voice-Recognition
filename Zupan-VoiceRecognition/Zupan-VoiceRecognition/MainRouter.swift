@@ -21,26 +21,23 @@ class MainRouter: MainRouterType {
     var navigationController: UINavigationController
     
     private var speechToCommandManager: SpeechToCommandManagerType
-    private var speechRecognizerProvider: SpeechRecognizerProviderType
     private var speechPermissionUseCase: SpeechPermissionUseCaseType
     private var microphonePermissionUseCase: MicrophonePermissionUseCaseType
     
     init(
         navigationController: UINavigationController,
         speechToCommandManager: SpeechToCommandManagerType,
-        speechRecognizerProvider: SpeechRecognizerProviderType,
         speechPermissionUseCase: SpeechPermissionUseCase,
         microphonePermissionUseCase: MicrophonePermissionUseCaseType
     ) {
         self.navigationController = navigationController
         self.speechToCommandManager = speechToCommandManager
-        self.speechRecognizerProvider = speechRecognizerProvider
         self.speechPermissionUseCase = speechPermissionUseCase
         self.microphonePermissionUseCase = microphonePermissionUseCase
     }
     
     func start() {
-        let vc = MainViewController(router: self, speechToCommand: speechToCommandManager, speechRecognizer: speechRecognizerProvider)
+        let vc = MainViewController(router: self, speechToCommand: speechToCommandManager)
         navigationController.pushViewController(vc, animated: false)
     }
     
