@@ -11,6 +11,7 @@ import Combine
 
 final class Zupan_VoiceRecognitionTests: XCTestCase {
     
+    let stateMachineFilename: String = "stateMachineDescription-en_US"
     var stateMachineDescription: StateMachineDescription!
     var sut: SpeechToCommandManagerType!
     
@@ -19,7 +20,7 @@ final class Zupan_VoiceRecognitionTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        guard let path = Bundle.main.path(forResource: "stateMachineDescription-en_US", ofType: "json"),
+        guard let path = Bundle.main.path(forResource: stateMachineFilename, ofType: "json"),
               let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe),
               let stateMachineDescription = try? JSONDecoder().decode(StateMachineDescription.self, from: data) else {
             fatalError("Language not available")
