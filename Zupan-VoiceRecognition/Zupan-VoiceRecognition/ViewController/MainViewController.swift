@@ -176,23 +176,23 @@ final class MainViewController: UIViewController {
     private func observeState() {
         $state
             .receive(on: RunLoop.main)
-            .sink { state in
+            .sink { [weak self] state in
                 switch state {
                 case .idle:
-                    self.startButton.setTitle(Tr.startButton, for: .normal)
-                    self.startButton.backgroundColor = .systemBlue
-                    self.stopButton.isHidden = true
-                    self.bufferLabel.isHidden = true
+                    self?.startButton.setTitle(Tr.startButton, for: .normal)
+                    self?.startButton.backgroundColor = .systemBlue
+                    self?.stopButton.isHidden = true
+                    self?.bufferLabel.isHidden = true
                 case .blocked:
-                    self.startButton.setTitle("Error", for: .normal)
-                    self.startButton.backgroundColor = .systemRed
-                    self.stopButton.isHidden = true
-                    self.bufferLabel.isHidden = true
+                    self?.startButton.setTitle("Error", for: .normal)
+                    self?.startButton.backgroundColor = .systemRed
+                    self?.stopButton.isHidden = true
+                    self?.bufferLabel.isHidden = true
                 case .listening:
-                    self.startButton.setTitle(Tr.empty, for: .normal)
-                    self.startButton.backgroundColor = .systemGreen
-                    self.stopButton.isHidden = false
-                    self.bufferLabel.isHidden = false
+                    self?.startButton.setTitle(Tr.empty, for: .normal)
+                    self?.startButton.backgroundColor = .systemGreen
+                    self?.stopButton.isHidden = false
+                    self?.bufferLabel.isHidden = false
                 }
             }.store(in: &viewCancellables)
     }
@@ -226,17 +226,17 @@ final class MainViewController: UIViewController {
         speechToCommand
             .bufferProvider
             .receive(on: RunLoop.main)
-            .sink { buffer in
-                self.createCircle()
-                self.bufferLabel.text = buffer
+            .sink { [weak self] buffer in
+                self?.createCircle()
+                self?.bufferLabel.text = buffer
             }.store(in: &cancellables)
         
         speechToCommand
             .lastCommandProvider
             .receive(on: RunLoop.main)
-            .sink { command in
-                self.createCircle()
-                self.startButton.setTitle(command.isEmpty ? Tr.empty : command, for: .normal)
+            .sink { [weak self] command in
+                self?.createCircle()
+                self?.startButton.setTitle(command.isEmpty ? Tr.empty : command, for: .normal)
             }.store(in: &cancellables)
     }
 
