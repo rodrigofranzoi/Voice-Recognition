@@ -9,7 +9,7 @@ import Foundation
 
 struct Rules {
     static let defaultLocale: String = "en_US"
-    static let availableLocales: Set<String> = ["en_US"]
+    static let availableLocales: Set<String> = ["en_US", "pt_BR", "de_DE"]
 }
 
 struct Files {

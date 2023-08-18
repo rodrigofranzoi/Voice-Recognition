@@ -1,0 +1,36 @@
+{
+    "version": "1.0",
+    "language": "de_DE",
+    "acceptedCommands": ["zählen", "codieren", "zurücksetzen", "zurück"],
+    "acceptedWords": ["zählen", "codieren", "zurücksetzen", "zurück", "eins", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+    "replacableWords":
+    {
+        "eins": "1"
+    },
+    "commands": [
+        {
+            "command": "zählen",
+            "nextCommands": ["zählen", "codieren", "zurücksetzen", "zurück"],
+            "acceptedParameters": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+            "action": "store"
+        },
+        {
+            "command": "codieren",
+            "nextCommands": ["zählen", "codieren", "zurücksetzen", "zurück"],
+            "acceptedParameters": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+            "action": "store"
+        },
+        {
+            "command": "zurücksetzen",
+            "nextCommands": ["zählen", "codieren", "zurücksetzen", "zurück"],
+            "acceptedParameters": [],
+            "action": "cancel"
+        },
+        {
+            "command": "zurück",
+            "nextCommands": ["zählen", "codieren", "zurücksetzen", "zurück"],
+            "acceptedParameters": [],
+            "action": "remove"
+        }
+    ]
+}

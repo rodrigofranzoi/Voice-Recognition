@@ -34,7 +34,7 @@ final class HistoryViewController: UIViewController {
         view.layer.zPosition = 1
         view.numberOfLines = 0
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        view.widthAnchor.constraint(equalToConstant: 250).isActive = true
         return view
     }()
     
