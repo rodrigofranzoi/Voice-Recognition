@@ -60,25 +60,11 @@ final class MainViewController: UIViewController {
         view.layer.cornerRadius = 5
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(buttonClickStop), for: .touchUpInside)
+        view.addTarget(self, action: #selector(showHistory), for: .touchUpInside)
         view.setTitle(Tr.history, for: .normal)
         view.heightAnchor.constraint(equalToConstant: 50).isActive = true
         return view
     }()
-    
-//    lazy var lastCommandLabel: UILabel = {
-//        let view = UILabel()
-//        view.backgroundColor = .systemGreen
-//        view.layer.cornerRadius = 5
-//        view.layer.masksToBounds = true
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        view.text = Tr.commands
-//        view.textColor = .white
-//        view.widthAnchor.constraint(equalToConstant: 150).isActive = true
-//        view.heightAnchor.constraint(equalToConstant: 50).isActive = true
-//        view.textAlignment = .center
-//        return view
-//    }()
     
     lazy var bufferLabel: UILabel = {
         let view = UILabel()
@@ -153,8 +139,8 @@ final class MainViewController: UIViewController {
     }
 
     @objc func showHistory() {
-        self.state = .idle
-        self.speechToCommand.stop()
+//        self.state = .idle
+//        self.speechToCommand.stop()
         self.router.showHistory()
     }
     

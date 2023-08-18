@@ -13,6 +13,7 @@
 		C2290B282A8E6F5C0044ACDE /* Translations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290B272A8E6F5C0044ACDE /* Translations.swift */; };
 		C2290B2B2A8E7B190044ACDE /* DialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290B2A2A8E7B190044ACDE /* DialogViewController.swift */; };
 		C2290B2D2A8EC3B00044ACDE /* MicrophonePermissionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290B2C2A8EC3B00044ACDE /* MicrophonePermissionUseCase.swift */; };
+		C2290B322A8F7D1E0044ACDE /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290B312A8F7D1E0044ACDE /* HistoryViewController.swift */; };
 		C22D67A12A8E10B200B2C5EE /* StateMachineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67A02A8E10B200B2C5EE /* StateMachineModel.swift */; };
 		C22D67A32A8E163F00B2C5EE /* stateMachineDescription-en_US.json in Resources */ = {isa = PBXBuildFile; fileRef = C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en_US.json */; };
 		C22D67A52A8E1E2C00B2C5EE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67A42A8E1E2C00B2C5EE /* Constants.swift */; };
@@ -60,6 +61,7 @@
 		C2290B272A8E6F5C0044ACDE /* Translations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translations.swift; sourceTree = "<group>"; };
 		C2290B2A2A8E7B190044ACDE /* DialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogViewController.swift; sourceTree = "<group>"; };
 		C2290B2C2A8EC3B00044ACDE /* MicrophonePermissionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophonePermissionUseCase.swift; sourceTree = "<group>"; };
+		C2290B312A8F7D1E0044ACDE /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		C22D67A02A8E10B200B2C5EE /* StateMachineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachineModel.swift; sourceTree = "<group>"; };
 		C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en_US.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "stateMachineDescription-en_US.json"; sourceTree = "<group>"; };
 		C22D67A42A8E1E2C00B2C5EE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			children = (
 				C2AE74E62A8BCC8900C1341D /* MainViewController.swift */,
 				C2290B2A2A8E7B190044ACDE /* DialogViewController.swift */,
+				C2290B312A8F7D1E0044ACDE /* HistoryViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				C2AE74B12A8BC22B00C1341D /* SceneDelegate.swift in Sources */,
 				C2AE74DF2A8BCB9200C1341D /* SpeechRecognizerProvider.swift in Sources */,
 				C22D67AA2A8E595E00B2C5EE /* MainRouter.swift in Sources */,
+				C2290B322A8F7D1E0044ACDE /* HistoryViewController.swift in Sources */,
 				C2290B2B2A8E7B190044ACDE /* DialogViewController.swift in Sources */,
 				C2290B282A8E6F5C0044ACDE /* Translations.swift in Sources */,
 				C2AE74EA2A8CC79200C1341D /* SpeechToCommandManager.swift in Sources */,

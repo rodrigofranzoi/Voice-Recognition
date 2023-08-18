@@ -109,7 +109,8 @@ class MainRouter: MainRouterType {
     }
     
     func showHistory() {
-        
+        let vc = HistoryViewController(router: self, speechToCommandManager: speechToCommandManager)
+        navigationController.present(vc, animated: true)
     }
     
     public func checkForPermissions(completion: @escaping (Bool) -> Void) {

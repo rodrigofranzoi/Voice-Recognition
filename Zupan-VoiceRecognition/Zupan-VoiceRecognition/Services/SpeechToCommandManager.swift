@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 protocol SpeechToCommandManagerType {
+    var history: [SpeechToCommandInput] { get }
     var stateProvider: AnyPublisher<StateMachineNode, Never> { get }
     var historyValueProvider: AnyPublisher<[SpeechToCommandInput], Never> { get }
     var bufferProvider: AnyPublisher<String, Never> { get }
