@@ -1,4 +1,4 @@
-"start_speech" = "Beginnen Sie mit dem Sprechen";
+"start_speech" = "Beginn";
 "stop_speech" = "Stopp";
 "empty" = "Leer";
 "noSpeechPermissionTitle" = "🔇 Sie haben keine Berechtigung zur Verwendung der Spracherkennung";
@@ -16,4 +16,4 @@
 "noHistory" = "Sie haben noch keine Befehle gesprochen";
 "dismiss" = "Zurück";
 "rulesTitle" = "Spielregeln:";
-"rulesDescription" = "Verfügbare Befehle:\nback, code: ✅ Akzeptiert: [count, code, back, reset] 🗣 Parameter: [0-9]\nback, reset: ✅ Akzeptiert: [count, code, back, reset] 🗣 Parameter: keine";
+"rulesDescription" = "Verfügbare Befehle:\n\nback, code:\n✅ Akzeptiert: [count, code, back, reset]\n🗣 Parameter: [0-9]\n\nback, reset:\n✅ Akzeptiert: [count, code, back, reset]\n🗣 Parameter: keine";

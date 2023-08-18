@@ -17,4 +17,4 @@
 "noHistory" = "You have not said any command yet";
 "dismiss" = "Dismiss";
 "rulesTitle" = "Rules for the game:";
-"rulesDescription" = "Available commands:\ncount, code: ✅ Accepts: [count, code, back, reset] 🗣 Parameters [0-9]\n\nback, reset: ✅ Accepts: [count, code, back, reset] 🗣 Parameters: none";
+"rulesDescription" = "Available commands:\n\ncount, code:\n✅ Accepts: [count, code, back, reset]\n🗣 Parameters [0-9]\n\nback, reset:\n✅ Accepts: [count, code, back, reset]\n🗣 Parameters: none";

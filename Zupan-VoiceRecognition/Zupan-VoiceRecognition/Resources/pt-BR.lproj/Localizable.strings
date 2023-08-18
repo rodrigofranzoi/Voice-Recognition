@@ -16,4 +16,4 @@
 "noHistory" = "Você ainda não falou nenhum comando";
 "dismiss" = "Voltar";
 "rulesTitle" = "Regras para o jogo:";
-"rulesDescription" = "Comandos Disponíveis:\ncontar, código: ✅ Aceita: [contar, código, voltar, resetar] 🗣 Parâmetros: [0-9]\nback, reset: ✅ Aceita: [contar, código, voltar, resetar] 🗣 Parâmetros: none";
+"rulesDescription" = "Comandos Disponíveis:\n\ncontar, código:\n✅ Aceita: [contar, código, voltar, resetar]\n🗣 Parâmetros: [0-9]\nback, reset:\n\n✅ Aceita: [contar, código, voltar, resetar]\n🗣 Parâmetros: none";

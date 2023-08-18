@@ -13,7 +13,16 @@ final class DialogViewController: UIViewController {
     
     struct ButtonDialogAction {
         let title: String
+        let color: UIColor
         let action: () -> Void
+
+        static func interactive(title: String,action: @escaping () -> Void) -> Self {
+            .init(title: title,color: .systemBlue, action: action)
+        }
+        
+        static func destructible(action: @escaping () -> Void) -> Self {
+            .init(title: Tr.cancel,color: .systemRed, action: action)
+        }
     }
     
     private let router: MainRouterType
@@ -97,9 +106,10 @@ final class DialogViewController: UIViewController {
             let view = UIButton()
             view.setTitle(button.title, for: .normal)
             view.addAction(UIAction(handler: { _ in button.action() }), for: .touchUpInside)
-            view.backgroundColor = .systemBlue
+            view.backgroundColor = button.color
             view.layer.cornerRadius = 10
             view.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+            view.heightAnchor.constraint(equalToConstant: 40).isActive = true
             buttonStackView.addArrangedSubview(view)
         }
         

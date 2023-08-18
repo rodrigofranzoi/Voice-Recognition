@@ -66,7 +66,7 @@ final class MainViewController: UIViewController {
     
     lazy var bufferLabel: UILabel = {
         let view = UILabel()
-        view.backgroundColor = .systemPink
+        view.backgroundColor = .systemGreen
         view.layer.cornerRadius = 5
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false

@@ -55,22 +55,23 @@ class MainRouter: MainRouterType {
             title: Tr.askMicPermissionTitle,
             body: Tr.askMicPermissionBody,
             buttons: [
-                .init(title: Tr.continueString, action: askForMicrophonePermission),
-                .init(title: Tr.cancel, action: dismiss)
+                .interactive(title: Tr.continueString, action: askForMicrophonePermission),
+                .destructible(action: dismiss)
             ]
         )
 
         navigationController.present(vc, animated: true)
     }
     
+
     func microphoneNotAvailableDialog() {
         let vc = DialogViewController(
             router: self,
             title: Tr.noMicPermissionTitle,
             body: Tr.noMicPermissionBody,
             buttons: [
-                .init(title: Tr.openSettings, action: openSettings),
-                .init(title: Tr.cancel, action: dismiss)
+                .interactive(title: Tr.openSettings, action: openSettings),
+                .destructible(action: dismiss)
             ]
         )
         
@@ -83,8 +84,8 @@ class MainRouter: MainRouterType {
             title: Tr.askSpeechPermissionTitle,
             body: Tr.askSpeechPermissionBody,
             buttons: [
-                .init(title: Tr.continueString, action: askForSpeechPermission),
-                .init(title: Tr.cancel, action: dismiss)
+                .interactive(title: Tr.continueString, action: askForSpeechPermission),
+                .destructible(action: dismiss)
             ]
         )
 
@@ -97,8 +98,8 @@ class MainRouter: MainRouterType {
             title: Tr.askSpeechPermissionTitle,
             body: Tr.askSpeechPermissionBody,
             buttons: [
-                .init(title: Tr.continueString, action: openSettings),
-                .init(title: Tr.cancel, action: dismiss)
+                .interactive(title: Tr.openSettings, action: openSettings),
+                .destructible(action: dismiss)
             ]
         )
 
