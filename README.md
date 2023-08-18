@@ -103,6 +103,6 @@ Expected data:
 
 ## Demo
 
-![Demo](./Resources/full_demo.mov)
+[![DEMO](https://img.youtube.com/vi/PYJKEo0J6qw/0.jpg)](https://www.youtube.com/watch?v=PYJKEo0J6qw)
 
-
+More details [here](./Resources/Mobile-application.pdf)
