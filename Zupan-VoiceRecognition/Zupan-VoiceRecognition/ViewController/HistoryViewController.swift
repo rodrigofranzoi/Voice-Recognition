@@ -113,8 +113,8 @@ extension HistoryViewController: UITableViewDataSource {
         let infoCell = history[indexPath.row]
         var content = cell?.defaultContentConfiguration()
         
-        content?.text = infoCell.command
-        content?.secondaryText = infoCell.value
+        content?.text = "command: \(infoCell.command)"
+        content?.secondaryText = "value: \(infoCell.value)"
 
         cell?.contentConfiguration = content
         return cell ?? UITableViewCell()
