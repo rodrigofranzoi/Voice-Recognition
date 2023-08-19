@@ -1,0 +1,17 @@
+name: Swift
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  buildAndTest:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build
+      run: xcodebuild -workspace ./Zupan-VoiceRecognition/Zupan-VoiceRecognition.xcworkspace -scheme Zupan-VoiceRecognition -destination 'name=iPhone 12' build
+    - name: Test
+      run: xcodebuild -workspace ./Zupan-VoiceRecognition/Zupan-VoiceRecognition.xcworkspace -scheme Zupan-VoiceRecognition -destination 'name=iPhone 12' test
