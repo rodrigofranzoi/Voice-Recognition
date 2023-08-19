@@ -5,6 +5,7 @@ on:
   push:
     branches: [ "main" ]
 
+jobs:
   swiftlint:
     runs-on: ubuntu-latest
       container:
