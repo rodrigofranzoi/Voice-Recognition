@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SpeechToCommandInput: Codable {
+struct SpeechToCommandInput: Codable, Equatable {
     let command: String
     let value: String
 }

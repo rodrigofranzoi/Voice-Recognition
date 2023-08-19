@@ -24,11 +24,13 @@
 		C22D67A52A8E1E2C00B2C5EE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67A42A8E1E2C00B2C5EE /* Constants.swift */; };
 		C22D67AA2A8E595E00B2C5EE /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67A92A8E595E00B2C5EE /* MainRouter.swift */; };
 		C22D67AC2A8E5D2100B2C5EE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67AB2A8E5D2100B2C5EE /* Router.swift */; };
+		C25A03E12A9138D200E9E7AB /* ZupanVoiceRecognitionPtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A03E02A9138D200E9E7AB /* ZupanVoiceRecognitionPtTests.swift */; };
+		C25A03E32A91397700E9E7AB /* ZupanVoiceRecognitionDeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A03E22A91397700E9E7AB /* ZupanVoiceRecognitionDeTests.swift */; };
 		C2AE74AF2A8BC22B00C1341D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74AE2A8BC22B00C1341D /* AppDelegate.swift */; };
 		C2AE74B12A8BC22B00C1341D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74B02A8BC22B00C1341D /* SceneDelegate.swift */; };
 		C2AE74B82A8BC22D00C1341D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2AE74B72A8BC22D00C1341D /* Assets.xcassets */; };
 		C2AE74BB2A8BC22D00C1341D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2AE74B92A8BC22D00C1341D /* LaunchScreen.storyboard */; };
-		C2AE74C62A8BC22D00C1341D /* Zupan_VoiceRecognitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74C52A8BC22D00C1341D /* Zupan_VoiceRecognitionTests.swift */; };
+		C2AE74C62A8BC22D00C1341D /* ZupanVoiceRecognitionEnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74C52A8BC22D00C1341D /* ZupanVoiceRecognitionEnTests.swift */; };
 		C2AE74D02A8BC22D00C1341D /* Zupan_VoiceRecognitionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74CF2A8BC22D00C1341D /* Zupan_VoiceRecognitionUITests.swift */; };
 		C2AE74D22A8BC22D00C1341D /* Zupan_VoiceRecognitionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74D12A8BC22D00C1341D /* Zupan_VoiceRecognitionUITestsLaunchTests.swift */; };
 		C2AE74DF2A8BCB9200C1341D /* SpeechRecognizerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE74DE2A8BCB9200C1341D /* SpeechRecognizerProvider.swift */; };
@@ -74,6 +76,8 @@
 		C22D67A42A8E1E2C00B2C5EE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C22D67A92A8E595E00B2C5EE /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		C22D67AB2A8E5D2100B2C5EE /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		C25A03E02A9138D200E9E7AB /* ZupanVoiceRecognitionPtTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZupanVoiceRecognitionPtTests.swift; sourceTree = "<group>"; };
+		C25A03E22A91397700E9E7AB /* ZupanVoiceRecognitionDeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZupanVoiceRecognitionDeTests.swift; sourceTree = "<group>"; };
 		C2AE74AB2A8BC22B00C1341D /* Zupan-VoiceRecognition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zupan-VoiceRecognition.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2AE74AE2A8BC22B00C1341D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2AE74B02A8BC22B00C1341D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +85,7 @@
 		C2AE74BA2A8BC22D00C1341D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C2AE74BC2A8BC22D00C1341D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2AE74C12A8BC22D00C1341D /* Zupan-VoiceRecognitionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Zupan-VoiceRecognitionTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2AE74C52A8BC22D00C1341D /* Zupan_VoiceRecognitionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zupan_VoiceRecognitionTests.swift; sourceTree = "<group>"; };
+		C2AE74C52A8BC22D00C1341D /* ZupanVoiceRecognitionEnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZupanVoiceRecognitionEnTests.swift; sourceTree = "<group>"; };
 		C2AE74CB2A8BC22D00C1341D /* Zupan-VoiceRecognitionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Zupan-VoiceRecognitionUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2AE74CF2A8BC22D00C1341D /* Zupan_VoiceRecognitionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zupan_VoiceRecognitionUITests.swift; sourceTree = "<group>"; };
 		C2AE74D12A8BC22D00C1341D /* Zupan_VoiceRecognitionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zupan_VoiceRecognitionUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -169,7 +173,9 @@
 		C2AE74C42A8BC22D00C1341D /* Zupan-VoiceRecognitionTests */ = {
 			isa = PBXGroup;
 			children = (
-				C2AE74C52A8BC22D00C1341D /* Zupan_VoiceRecognitionTests.swift */,
+				C2AE74C52A8BC22D00C1341D /* ZupanVoiceRecognitionEnTests.swift */,
+				C25A03E22A91397700E9E7AB /* ZupanVoiceRecognitionDeTests.swift */,
+				C25A03E02A9138D200E9E7AB /* ZupanVoiceRecognitionPtTests.swift */,
 				C2290B372A8FB10A0044ACDE /* SpeechRecognizerProviderMock.swift */,
 			);
 			path = "Zupan-VoiceRecognitionTests";
@@ -429,7 +435,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2290B382A8FB10A0044ACDE /* SpeechRecognizerProviderMock.swift in Sources */,
-				C2AE74C62A8BC22D00C1341D /* Zupan_VoiceRecognitionTests.swift in Sources */,
+				C25A03E12A9138D200E9E7AB /* ZupanVoiceRecognitionPtTests.swift in Sources */,
+				C25A03E32A91397700E9E7AB /* ZupanVoiceRecognitionDeTests.swift in Sources */,
+				C2AE74C62A8BC22D00C1341D /* ZupanVoiceRecognitionEnTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
