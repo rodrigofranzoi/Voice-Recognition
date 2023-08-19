@@ -27,9 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(windowScene: scene)
 
-        // swiftlint:disable:next line_length
-        let identifier = Rules.availableLocales.contains(Locale.current.identifier) ? Locale.current.identifier : Rules.defaultLocale
-        let locale = Locale.init(identifier: identifier)
+        let langId = Locale.current.language.languageCode?.identifier ?? Rules.defaultLanguage
+        let identifier = Rules.availableLanguages.contains(langId) ? langId : Rules.defaultLanguage
 
         guard let path = Bundle.main.path(forResource: "\(Files.baseLangFilename)\(identifier)", ofType: "json"),
               let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe),
@@ -37,6 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             fatalError("Language not available")
         }
 
+        let locale = Locale.init(identifier: stateMachineDescription.language)
         let speechRecognizerProvider = SpeechRecognizerProvider(locale: locale)
         let speechToCommand = SpeechToCommandManager(
             manager: speechRecognizerProvider,

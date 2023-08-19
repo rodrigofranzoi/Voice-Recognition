@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C2290B1B2A8E6C8F0044ACDE /* stateMachineDescription-pt_BR.json in Resources */ = {isa = PBXBuildFile; fileRef = C2290B1A2A8E6C8F0044ACDE /* stateMachineDescription-pt_BR.json */; };
+		C2290B1B2A8E6C8F0044ACDE /* stateMachineDescription-pt.json in Resources */ = {isa = PBXBuildFile; fileRef = C2290B1A2A8E6C8F0044ACDE /* stateMachineDescription-pt.json */; };
 		C2290B1D2A8E6DB60044ACDE /* SpeechPermissionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290B1C2A8E6DB60044ACDE /* SpeechPermissionUseCase.swift */; };
 		C2290B202A8E6EA20044ACDE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2290B222A8E6EA20044ACDE /* Localizable.strings */; };
 		C2290B282A8E6F5C0044ACDE /* Translations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290B272A8E6F5C0044ACDE /* Translations.swift */; };
 		C2290B2B2A8E7B190044ACDE /* DialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290B2A2A8E7B190044ACDE /* DialogViewController.swift */; };
 		C2290B2D2A8EC3B00044ACDE /* MicrophonePermissionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290B2C2A8EC3B00044ACDE /* MicrophonePermissionUseCase.swift */; };
 		C2290B322A8F7D1E0044ACDE /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290B312A8F7D1E0044ACDE /* HistoryViewController.swift */; };
-		C2290B362A8F8E070044ACDE /* stateMachineDescription-de_DE.json in Resources */ = {isa = PBXBuildFile; fileRef = C2290B352A8F8E070044ACDE /* stateMachineDescription-de_DE.json */; };
+		C2290B362A8F8E070044ACDE /* stateMachineDescription-de.json in Resources */ = {isa = PBXBuildFile; fileRef = C2290B352A8F8E070044ACDE /* stateMachineDescription-de.json */; };
 		C2290B382A8FB10A0044ACDE /* SpeechRecognizerProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290B372A8FB10A0044ACDE /* SpeechRecognizerProviderMock.swift */; };
-		C2290B392A8FB6670044ACDE /* stateMachineDescription-en_US.json in Resources */ = {isa = PBXBuildFile; fileRef = C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en_US.json */; };
-		C2290B3A2A8FB6670044ACDE /* stateMachineDescription-pt_BR.json in Resources */ = {isa = PBXBuildFile; fileRef = C2290B1A2A8E6C8F0044ACDE /* stateMachineDescription-pt_BR.json */; };
-		C2290B3B2A8FB6670044ACDE /* stateMachineDescription-de_DE.json in Resources */ = {isa = PBXBuildFile; fileRef = C2290B352A8F8E070044ACDE /* stateMachineDescription-de_DE.json */; };
+		C2290B392A8FB6670044ACDE /* stateMachineDescription-en.json in Resources */ = {isa = PBXBuildFile; fileRef = C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en.json */; };
+		C2290B3A2A8FB6670044ACDE /* stateMachineDescription-pt.json in Resources */ = {isa = PBXBuildFile; fileRef = C2290B1A2A8E6C8F0044ACDE /* stateMachineDescription-pt.json */; };
+		C2290B3B2A8FB6670044ACDE /* stateMachineDescription-de.json in Resources */ = {isa = PBXBuildFile; fileRef = C2290B352A8F8E070044ACDE /* stateMachineDescription-de.json */; };
 		C22D67A12A8E10B200B2C5EE /* StateMachineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67A02A8E10B200B2C5EE /* StateMachineModel.swift */; };
-		C22D67A32A8E163F00B2C5EE /* stateMachineDescription-en_US.json in Resources */ = {isa = PBXBuildFile; fileRef = C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en_US.json */; };
+		C22D67A32A8E163F00B2C5EE /* stateMachineDescription-en.json in Resources */ = {isa = PBXBuildFile; fileRef = C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en.json */; };
 		C22D67A52A8E1E2C00B2C5EE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67A42A8E1E2C00B2C5EE /* Constants.swift */; };
 		C22D67AA2A8E595E00B2C5EE /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67A92A8E595E00B2C5EE /* MainRouter.swift */; };
 		C22D67AC2A8E5D2100B2C5EE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22D67AB2A8E5D2100B2C5EE /* Router.swift */; };
@@ -58,7 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C2290B1A2A8E6C8F0044ACDE /* stateMachineDescription-pt_BR.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "stateMachineDescription-pt_BR.json"; sourceTree = "<group>"; };
+		C2290B1A2A8E6C8F0044ACDE /* stateMachineDescription-pt.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "stateMachineDescription-pt.json"; sourceTree = "<group>"; };
 		C2290B1C2A8E6DB60044ACDE /* SpeechPermissionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechPermissionUseCase.swift; sourceTree = "<group>"; };
 		C2290B212A8E6EA20044ACDE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C2290B232A8E6ED40044ACDE /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -69,10 +69,10 @@
 		C2290B2A2A8E7B190044ACDE /* DialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogViewController.swift; sourceTree = "<group>"; };
 		C2290B2C2A8EC3B00044ACDE /* MicrophonePermissionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophonePermissionUseCase.swift; sourceTree = "<group>"; };
 		C2290B312A8F7D1E0044ACDE /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
-		C2290B352A8F8E070044ACDE /* stateMachineDescription-de_DE.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "stateMachineDescription-de_DE.json"; sourceTree = "<group>"; };
+		C2290B352A8F8E070044ACDE /* stateMachineDescription-de.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "stateMachineDescription-de.json"; sourceTree = "<group>"; };
 		C2290B372A8FB10A0044ACDE /* SpeechRecognizerProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizerProviderMock.swift; sourceTree = "<group>"; };
 		C22D67A02A8E10B200B2C5EE /* StateMachineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachineModel.swift; sourceTree = "<group>"; };
-		C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en_US.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "stateMachineDescription-en_US.json"; sourceTree = "<group>"; };
+		C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "stateMachineDescription-en.json"; sourceTree = "<group>"; };
 		C22D67A42A8E1E2C00B2C5EE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C22D67A92A8E595E00B2C5EE /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		C22D67AB2A8E5D2100B2C5EE /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -204,9 +204,9 @@
 			isa = PBXGroup;
 			children = (
 				C2AE74B72A8BC22D00C1341D /* Assets.xcassets */,
-				C2290B352A8F8E070044ACDE /* stateMachineDescription-de_DE.json */,
-				C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en_US.json */,
-				C2290B1A2A8E6C8F0044ACDE /* stateMachineDescription-pt_BR.json */,
+				C2290B352A8F8E070044ACDE /* stateMachineDescription-de.json */,
+				C22D67A22A8E163F00B2C5EE /* stateMachineDescription-en.json */,
+				C2290B1A2A8E6C8F0044ACDE /* stateMachineDescription-pt.json */,
 				C22D67A42A8E1E2C00B2C5EE /* Constants.swift */,
 				C2290B272A8E6F5C0044ACDE /* Translations.swift */,
 				C2290B222A8E6EA20044ACDE /* Localizable.strings */,
@@ -359,9 +359,9 @@
 			files = (
 				C2290B202A8E6EA20044ACDE /* Localizable.strings in Resources */,
 				C2AE74BB2A8BC22D00C1341D /* LaunchScreen.storyboard in Resources */,
-				C2290B1B2A8E6C8F0044ACDE /* stateMachineDescription-pt_BR.json in Resources */,
-				C22D67A32A8E163F00B2C5EE /* stateMachineDescription-en_US.json in Resources */,
-				C2290B362A8F8E070044ACDE /* stateMachineDescription-de_DE.json in Resources */,
+				C2290B1B2A8E6C8F0044ACDE /* stateMachineDescription-pt.json in Resources */,
+				C22D67A32A8E163F00B2C5EE /* stateMachineDescription-en.json in Resources */,
+				C2290B362A8F8E070044ACDE /* stateMachineDescription-de.json in Resources */,
 				C2AE74B82A8BC22D00C1341D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,9 +370,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2290B3A2A8FB6670044ACDE /* stateMachineDescription-pt_BR.json in Resources */,
-				C2290B3B2A8FB6670044ACDE /* stateMachineDescription-de_DE.json in Resources */,
-				C2290B392A8FB6670044ACDE /* stateMachineDescription-en_US.json in Resources */,
+				C2290B3A2A8FB6670044ACDE /* stateMachineDescription-pt.json in Resources */,
+				C2290B3B2A8FB6670044ACDE /* stateMachineDescription-de.json in Resources */,
+				C2290B392A8FB6670044ACDE /* stateMachineDescription-en.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

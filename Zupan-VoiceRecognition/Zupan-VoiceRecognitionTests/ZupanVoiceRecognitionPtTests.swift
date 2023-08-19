@@ -10,7 +10,7 @@ import Combine
 @testable import Zupan_VoiceRecognition
 
 final class ZupanVoiceRecognitionPtTests: XCTestCase {
-    let stateMachineFilename: String = "stateMachineDescription-pt_BR"
+    let stateMachineFilename: String = "stateMachineDescription-pt"
     var stateMachineDescription: StateMachineDescription!
     var sut: SpeechToCommandManagerType!
 
