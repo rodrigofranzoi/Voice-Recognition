@@ -12,7 +12,7 @@ extension AnyPublisher {
     @discardableResult func sink() -> AnyCancellable {
         self.sink { _ in } receiveValue: { _ in }
     }
-    
+
     @discardableResult func sink(receiveValue: @escaping ((Output) -> Void)) -> AnyCancellable {
         self.sink(receiveCompletion: { _ in }, receiveValue: receiveValue)
     }

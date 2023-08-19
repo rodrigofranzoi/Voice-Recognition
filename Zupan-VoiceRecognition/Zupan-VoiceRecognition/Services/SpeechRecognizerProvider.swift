@@ -11,8 +11,8 @@ import Combine
 
 protocol SpeechRecognizerProviderType {
     var valueReceived: AnyPublisher<String, SpeechRecognizerError> { get }
-    
-    func start() -> AnyPublisher<Void, SpeechRecognizerError>
+
+    @discardableResult func start() -> AnyPublisher<Void, SpeechRecognizerError>
     func stop()
 }
 
@@ -25,29 +25,29 @@ enum SpeechRecognizerError: Error {
 
 class SpeechRecognizerProvider: NSObject, SpeechRecognizerProviderType, SFSpeechRecognizerDelegate {
     public let locale: Locale
-    
+
     private var audioEngine: AVAudioEngine?
     private var speechRecognizer: SFSpeechRecognizer?
     private var request: SFSpeechAudioBufferRecognitionRequest?
     private var task: SFSpeechRecognitionTask?
     private let recognitionSubject = PassthroughSubject<String, SpeechRecognizerError>()
-    
+
     init(locale: Locale = .init(identifier: "en_US")) {
         self.locale = locale
     }
 
-    public func start() -> AnyPublisher<Void, SpeechRecognizerError> {
+    @discardableResult public func start() -> AnyPublisher<Void, SpeechRecognizerError> {
         let audioEngine = AVAudioEngine()
         self.audioEngine = audioEngine
         self.request = SFSpeechAudioBufferRecognitionRequest()
         self.speechRecognizer = SFSpeechRecognizer(locale: locale)
-        
+
         let node = audioEngine.inputNode
         let recordingFormat = node.outputFormat(forBus: 0)
         node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
             self.request?.append(buffer)
         }
-        
+
         audioEngine.prepare()
         do {
             try audioEngine.start()
@@ -56,7 +56,7 @@ class SpeechRecognizerProvider: NSObject, SpeechRecognizerProviderType, SFSpeech
         }
         return Empty().eraseToAnyPublisher()
     }
-    
+
     public var valueReceived: AnyPublisher<String, SpeechRecognizerError> {
         if task == nil {
             guard let recognizer = self.speechRecognizer,
@@ -81,7 +81,7 @@ class SpeechRecognizerProvider: NSObject, SpeechRecognizerProviderType, SFSpeech
             .share()
             .eraseToAnyPublisher()
     }
-    
+
     public func stop() {
         task?.finish()
         audioEngine?.stop()

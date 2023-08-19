@@ -14,7 +14,7 @@ protocol SpeechToCommandManagerType {
     var historyValueProvider: AnyPublisher<[SpeechToCommandInput], Never> { get }
     var bufferProvider: AnyPublisher<String, Never> { get }
     var lastCommandProvider: AnyPublisher<String, Never> { get }
-    
+
     func start()
     func reset()
     func stop()
@@ -26,12 +26,12 @@ class SpeechToCommandManager: SpeechToCommandManagerType {
     private let manager: SpeechRecognizerProviderType
     private let stateMachine: StateMachineDescription
     private var cancellables = Set<AnyCancellable>()
-    
+
     @Published var state: StateMachineNode?
     @Published var history: [SpeechToCommandInput] = []
     @Published var lastCommand: String?
     @Published var buff: String = ""
-    
+
     init(
         manager: SpeechRecognizerProviderType,
         stateMachine: StateMachineDescription
@@ -39,15 +39,14 @@ class SpeechToCommandManager: SpeechToCommandManagerType {
         self.manager = manager
         self.stateMachine = stateMachine
     }
-    
+
     public func start() {
-        let _ = manager.start()
-        
+        manager.start()
         self.speechValueProvider
             .sink()
             .store(in: &cancellables)
     }
-    
+
     public func stop() {
         if let actualState = self.state,
            actualState.action == .store,
@@ -61,12 +60,12 @@ class SpeechToCommandManager: SpeechToCommandManagerType {
         buff.removeAll()
         cancellables.forEach { $0.cancel() }
     }
-    
+
     public func reset() {
         self.stop()
         history.removeAll()
     }
-    
+
     public var stateProvider: AnyPublisher<StateMachineNode, Never> {
         $state
             .compactMap { $0 }
@@ -79,18 +78,17 @@ class SpeechToCommandManager: SpeechToCommandManagerType {
             .removeDuplicates(by: { $0.count == $1.count })
             .eraseToAnyPublisher()
     }
-    
+
     public var bufferProvider: AnyPublisher<String, Never> {
         $buff
             .eraseToAnyPublisher()
     }
-    
+
     public var lastCommandProvider: AnyPublisher<String, Never> {
         $lastCommand
             .compactMap { $0 }
             .eraseToAnyPublisher()
     }
-    
 
     private var speechValueProvider: AnyPublisher<String, SpeechRecognizerError> {
         manager
@@ -102,7 +100,7 @@ class SpeechToCommandManager: SpeechToCommandManagerType {
             .share()
             .eraseToAnyPublisher()
     }
-    
+
     public func handleActionFor(_ value: String) -> String? {
         guard let actualState = self.state else {
             self.state = self.stateMachine.commands.first(where: { $0.command == value })
@@ -112,7 +110,7 @@ class SpeechToCommandManager: SpeechToCommandManagerType {
             }
             return nil
         }
-        
+
         if let parameters = actualState.acceptedParameters,
                parameters.contains(value) {
             self.buff += value
@@ -129,7 +127,7 @@ class SpeechToCommandManager: SpeechToCommandManagerType {
                 if !history.isEmpty { history.removeLast() }
             default: break
             }
-            
+
             self.lastCommand = value
             self.state = newState
             self.buff.removeAll()

@@ -10,7 +10,7 @@ import UIKit
 
 protocol Router {
     var navigationController: UINavigationController { get set }
-    
+
     func start()
     func dismiss()
     func backToRoot()

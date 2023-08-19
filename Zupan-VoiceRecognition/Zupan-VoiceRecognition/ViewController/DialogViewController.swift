@@ -8,26 +8,25 @@
 import Foundation
 import UIKit
 
-
 final class DialogViewController: UIViewController {
-    
+
     struct ButtonDialogAction {
         let title: String
         let color: UIColor
         let action: () -> Void
 
-        static func interactive(title: String,action: @escaping () -> Void) -> Self {
-            .init(title: title,color: .systemBlue, action: action)
+        static func interactive(title: String, action: @escaping () -> Void) -> Self {
+            .init(title: title, color: .systemBlue, action: action)
         }
-        
+
         static func destructible(action: @escaping () -> Void) -> Self {
-            .init(title: Tr.cancel,color: .systemRed, action: action)
+            .init(title: Tr.cancel, color: .systemRed, action: action)
         }
     }
-    
+
     private let router: MainRouterType
     private let buttons: [ButtonDialogAction]
-    
+
     init(router: MainRouterType,
          title: String,
          body: String,
@@ -39,7 +38,7 @@ final class DialogViewController: UIViewController {
         self.viewTitle.text = title
         self.body.text = body
     }
-    
+
     lazy var viewTitle: UILabel = {
         let view = UILabel()
         view.text = "Title"
@@ -50,7 +49,7 @@ final class DialogViewController: UIViewController {
         view.numberOfLines = 0
         return view
     }()
-    
+
     lazy var body: UILabel = {
         let view = UILabel()
         view.text = "Description"
@@ -61,7 +60,7 @@ final class DialogViewController: UIViewController {
         view.numberOfLines = 0
         return view
     }()
-    
+
     lazy var stackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -71,7 +70,7 @@ final class DialogViewController: UIViewController {
         view.alignment = .fill
         return view
     }()
-    
+
     lazy var buttonStackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -81,7 +80,7 @@ final class DialogViewController: UIViewController {
         view.alignment = .fill
         return view
     }()
-    
+
     lazy var viewContainer: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 20
@@ -90,18 +89,18 @@ final class DialogViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         stackView.addArrangedSubview(viewTitle)
         stackView.addArrangedSubview(body)
         stackView.addArrangedSubview(buttonStackView)
-        
+
         buttons.forEach { button in
             let view = UIButton()
             view.setTitle(button.title, for: .normal)
@@ -112,13 +111,13 @@ final class DialogViewController: UIViewController {
             view.heightAnchor.constraint(equalToConstant: 40).isActive = true
             buttonStackView.addArrangedSubview(view)
         }
-        
+
         viewContainer.addSubview(stackView)
         view.addSubview(viewContainer)
-        
+
         setupConstraints()
     }
-    
+
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             viewContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -127,7 +126,7 @@ final class DialogViewController: UIViewController {
             stackView.leadingAnchor.constraint(equalTo: viewContainer.leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: viewContainer.trailingAnchor, constant: -16),
             stackView.bottomAnchor.constraint(equalTo: viewContainer.bottomAnchor, constant: -56),
-            stackView.topAnchor.constraint(equalTo: viewContainer.topAnchor, constant: 16),
+            stackView.topAnchor.constraint(equalTo: viewContainer.topAnchor, constant: 16)
         ])
     }
 }

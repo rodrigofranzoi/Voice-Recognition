@@ -19,11 +19,11 @@ protocol MainRouterType: Router {
 
 class MainRouter: MainRouterType {
     var navigationController: UINavigationController
-    
+
     private var speechToCommandManager: SpeechToCommandManagerType
     private var speechPermissionUseCase: SpeechPermissionUseCaseType
     private var microphonePermissionUseCase: MicrophonePermissionUseCaseType
-    
+
     init(
         navigationController: UINavigationController,
         speechToCommandManager: SpeechToCommandManagerType,
@@ -35,20 +35,20 @@ class MainRouter: MainRouterType {
         self.speechPermissionUseCase = speechPermissionUseCase
         self.microphonePermissionUseCase = microphonePermissionUseCase
     }
-    
+
     func start() {
         let vc = MainViewController(router: self, speechToCommand: speechToCommandManager)
         navigationController.pushViewController(vc, animated: false)
     }
-    
+
     func dismiss() {
         navigationController.dismiss(animated: true)
     }
-    
+
     func backToRoot() {
         navigationController.popToRootViewController(animated: true)
     }
-    
+
     func askForMicrophonePermissionDialog() {
         let vc = DialogViewController(
             router: self,
@@ -62,7 +62,6 @@ class MainRouter: MainRouterType {
 
         navigationController.present(vc, animated: true)
     }
-    
 
     func microphoneNotAvailableDialog() {
         let vc = DialogViewController(
@@ -74,10 +73,9 @@ class MainRouter: MainRouterType {
                 .destructible(action: dismiss)
             ]
         )
-        
         navigationController.present(vc, animated: true)
     }
-    
+
     func askForSpeechPermissionDialog() {
         let vc = DialogViewController(
             router: self,
@@ -91,7 +89,7 @@ class MainRouter: MainRouterType {
 
         navigationController.present(vc, animated: true)
     }
-    
+
     func speechNotAvailableDialog() {
         let vc = DialogViewController(
             router: self,
@@ -105,12 +103,12 @@ class MainRouter: MainRouterType {
 
         navigationController.present(vc, animated: true)
     }
-    
+
     func showHistory() {
         let vc = HistoryViewController(router: self, speechToCommandManager: speechToCommandManager)
         navigationController.present(vc, animated: true)
     }
-    
+
     public func checkForPermissions(completion: @escaping (Bool) -> Void) {
         let micPermission = microphonePermissionUseCase.status
         let speechPermission = speechPermissionUseCase.status
@@ -122,13 +120,13 @@ class MainRouter: MainRouterType {
         default: completion(true)
         }
     }
-    
+
     private func openSettings() {
         guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
         dismiss()
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
-    
+
     private func askForMicrophonePermission() {
         dismiss()
         microphonePermissionUseCase.requestAuthorization { _ in
@@ -137,7 +135,7 @@ class MainRouter: MainRouterType {
             }
         }
     }
-    
+
     private func askForSpeechPermission() {
         dismiss()
         speechPermissionUseCase.requestAuthorization { _ in

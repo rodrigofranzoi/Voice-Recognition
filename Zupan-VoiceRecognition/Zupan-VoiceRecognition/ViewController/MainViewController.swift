@@ -10,21 +10,21 @@ import Combine
 import UIKit
 
 final class MainViewController: UIViewController {
-    
+
     enum State {
         case listening
         case idle
         case blocked
     }
-    
+
     private let router: MainRouterType
 
     private var speechToCommand: SpeechToCommandManagerType
     private var viewCancellables = Set<AnyCancellable>()
     private var cancellables = Set<AnyCancellable>()
-    
+
     @Published private var state: State = .idle
-    
+
     lazy var startButton: UIButton = {
         let view = UIButton()
         view.backgroundColor = .systemBlue
@@ -38,7 +38,7 @@ final class MainViewController: UIViewController {
         view.layer.zPosition = 2
         return view
     }()
-    
+
     lazy var stopButton: UIButton = {
         let view = UIButton()
         view.backgroundColor = .systemRed
@@ -50,7 +50,7 @@ final class MainViewController: UIViewController {
         view.heightAnchor.constraint(equalToConstant: 50).isActive = true
         return view
     }()
-    
+
     lazy var historyButton: UIButton = {
         let view = UIButton()
         view.backgroundColor = .systemGray
@@ -63,7 +63,7 @@ final class MainViewController: UIViewController {
         view.heightAnchor.constraint(equalToConstant: 50).isActive = true
         return view
     }()
-    
+
     lazy var bufferLabel: UILabel = {
         let view = UILabel()
         view.backgroundColor = .systemGreen
@@ -76,7 +76,7 @@ final class MainViewController: UIViewController {
         view.textAlignment = .center
         return view
     }()
-    
+
     lazy var rulesStackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -87,7 +87,7 @@ final class MainViewController: UIViewController {
         view.layer.zPosition = 2
         return view
     }()
-    
+
     lazy var titleLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -98,7 +98,7 @@ final class MainViewController: UIViewController {
         view.numberOfLines = 0
         return view
     }()
-    
+
     lazy var descriptionLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -109,7 +109,7 @@ final class MainViewController: UIViewController {
         view.numberOfLines = 0
         return view
     }()
-    
+
     lazy var stackView: UIStackView = {
         let view = UIStackView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -120,28 +120,28 @@ final class MainViewController: UIViewController {
         view.layer.zPosition = 2
         return view
     }()
-    
+
     init(router: MainRouterType,
          speechToCommand: SpeechToCommandManagerType) {
         self.speechToCommand = speechToCommand
         self.router = router
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         stackView.addArrangedSubview(bufferLabel)
         stackView.addArrangedSubview(stopButton)
         stackView.addArrangedSubview(historyButton)
-        
+
         rulesStackView.addArrangedSubview(titleLabel)
         rulesStackView.addArrangedSubview(descriptionLabel)
-        
+
         view.addSubview(rulesStackView)
         view.addSubview(startButton)
         view.addSubview(stackView)
@@ -149,18 +149,18 @@ final class MainViewController: UIViewController {
         setupConstraints()
         observeState()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.router.checkForPermissions(completion: { _ in })
     }
-    
+
     @objc func buttonClickStart() {
         self.state = .listening
         self.speechToCommand.start()
         self.observeValues()
     }
-    
+
     @objc func buttonClickStop() {
         self.state = .idle
         self.speechToCommand.stop()
@@ -172,7 +172,7 @@ final class MainViewController: UIViewController {
     @objc func showHistory() {
         self.router.showHistory()
     }
-    
+
     private func observeState() {
         $state
             .receive(on: RunLoop.main)
@@ -196,7 +196,7 @@ final class MainViewController: UIViewController {
                 }
             }.store(in: &viewCancellables)
     }
-    
+
     private func createCircle() {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -207,21 +207,21 @@ final class MainViewController: UIViewController {
         view.layer.shadowOpacity = 0.3
         view.backgroundColor = .white
         view.isUserInteractionEnabled = false
-        
+
         self.view.addSubview(view)
-        
+
         view.widthAnchor.constraint(equalToConstant: 200).isActive = true
         view.heightAnchor.constraint(equalToConstant: 200).isActive = true
         view.centerXAnchor.constraint(equalTo: self.startButton.centerXAnchor).isActive = true
         view.centerYAnchor.constraint(equalTo: self.startButton.centerYAnchor).isActive = true
-        
-        UIView.animate(withDuration: 2, animations: {
+
+        UIView.animate(withDuration: 2) {
             view.transform = CGAffineTransform(scaleX: 2, y: 2)
-        }) { (finished) in
+        } completion: { _ in
             view.removeFromSuperview()
         }
     }
-    
+
     private func observeValues() {
         speechToCommand
             .bufferProvider
@@ -230,7 +230,7 @@ final class MainViewController: UIViewController {
                 self?.createCircle()
                 self?.bufferLabel.text = buffer
             }.store(in: &cancellables)
-        
+
         speechToCommand
             .lastCommandProvider
             .receive(on: RunLoop.main)
@@ -253,4 +253,3 @@ final class MainViewController: UIViewController {
         ])
     }
 }
-

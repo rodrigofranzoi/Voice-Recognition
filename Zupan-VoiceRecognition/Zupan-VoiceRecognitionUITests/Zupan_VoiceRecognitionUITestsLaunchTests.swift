@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class Zupan_VoiceRecognitionUITestsLaunchTests: XCTestCase {
+final class VoiceRecognitionUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
