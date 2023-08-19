@@ -29,5 +29,5 @@ struct Translations {
     static let rulesTitle = String(localized: "rulesTitle")
     static let rulesDescription = String(localized: "rulesDescription")
 }
-
+// swiftlint:disable:next type_name
 typealias Tr = Translations

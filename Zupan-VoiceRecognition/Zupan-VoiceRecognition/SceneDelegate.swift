@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: scene)
-        // swiftlint:disable:next line_length
+
         let identifier = Rules.availableLocales.contains(Locale.current.identifier) ? Locale.current.identifier : Rules.defaultLocale
         let locale = Locale.init(identifier: identifier)
 
