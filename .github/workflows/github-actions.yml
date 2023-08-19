@@ -10,6 +10,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build
-      run: xcodebuild -workspace ./Zupan-VoiceRecognition/Zupan-VoiceRecognition.xcodeproj -scheme Zupan-VoiceRecognition -destination 'name=iPhone 12' build
+      run: xcodebuild -xcodeproj ./Zupan-VoiceRecognition/Zupan-VoiceRecognition.xcodeproj -scheme Zupan-VoiceRecognition -destination 'name=iPhone 12' build
     - name: Test
-      run: xcodebuild -workspace ./Zupan-VoiceRecognition/Zupan-VoiceRecognition.xcodeproj -scheme Zupan-VoiceRecognition -destination 'name=iPhone 12' test
+      run: xcodebuild -xcodeproj ./Zupan-VoiceRecognition/Zupan-VoiceRecognition.xcodeproj -scheme Zupan-VoiceRecognition -destination 'name=iPhone 12' test
