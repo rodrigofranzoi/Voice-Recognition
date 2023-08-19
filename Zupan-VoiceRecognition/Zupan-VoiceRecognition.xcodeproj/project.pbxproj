@@ -124,8 +124,8 @@
 		C22D67A62A8E57E800B2C5EE /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				C2AE74DE2A8BCB9200C1341D /* SpeechRecognizerProvider.swift */,
 				C2AE74E92A8CC79200C1341D /* SpeechToCommandManager.swift */,
+				C2AE74DE2A8BCB9200C1341D /* SpeechRecognizerProvider.swift */,
 				C2290B1C2A8E6DB60044ACDE /* SpeechPermissionUseCase.swift */,
 				C2290B2C2A8EC3B00044ACDE /* MicrophonePermissionUseCase.swift */,
 			);
