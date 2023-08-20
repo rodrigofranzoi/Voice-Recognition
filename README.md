@@ -2,11 +2,14 @@
 
 Languages available: 🇺🇸 🇧🇷 🇩🇪
 
-Note: the commands will change according with the langugage.
+Note: the commands will change according to the language.
+
+Note: the commands will change according to the language.
+
 
 ## Objectives
 
-With this application you can generate data simply using voice commands.
+With this application, you can generate data simply using voice commands.
 
 ## Rules
 
@@ -19,13 +22,13 @@ You have four commands:
 
 ## How to use
 
-1. Allow the app to use micrphone 🎤 so we can hear you 👀
+1. Allow the app to use microphone 🎤 so we can hear you 👀
 2. Allow the app to use speech functionality
 3. Click `Start speech`
 4. Now you can say `count, code, back, reset` and numbers from 0 to 9
-5. The last command will appear on the green circle in the middle the screen
-6. The buffer of parameters are located on the green square. It means the values allocated for the current last given command.
-7. You can always check your inputs clicking on `History` button. You can say commands ands parameters while in the history screen.
+5. The last command will appear on the green circle in the middle of the screen
+6. The buffer of parameters is located on the green square. It means the values allocated for the current last given command.
+7. You can always check your inputs by clicking on `History` button. You can say commands and parameters while on the history screen.
 8. When you are done, click stop to save your last command.
 
 
@@ -36,15 +39,15 @@ Expected data:
 ```json
 [ 
     {
-        "command": "code"
+        "command": "code",
         "value": "125",
     },
     {
-        "command": "count"
+        "command": "count",
         "value": "1",
     },
     {
-        "command": "count"
+        "command": "count",
         "value": "51",
     }
 ]
@@ -57,11 +60,11 @@ Expected data:
 ```json
 [ 
     {
-        "command": "code"
+        "command": "code",
         "value": "25",
     },
     {
-        "command": "count"
+        "command": "count",
         "value": "1",
     }
 ]
@@ -69,12 +72,12 @@ Expected data:
 
 #### Example **Reset** command: 
 
-Sequence of commands: `["code", "9", "6", "8", "count", "1", "count" "9", "5", "reset"]` **program stopped**
+Sequence of commands: `["code", "9", "6", "8", "count", "1", "count", "9", "5", "reset"]` **program stopped**
 Expected data: 
 ```json
 [ 
     {
-        "command": "code"
+        "command": "code",
         "value": "968",
     },
     {
@@ -93,7 +96,7 @@ Expected data:
 ```json
 [ 
     {
-        "command": "code"
+        "command": "code",
         "value": "8",
     }
 ]
