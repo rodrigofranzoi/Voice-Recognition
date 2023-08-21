@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-extension AnyPublisher {
+extension Publisher {
     @discardableResult func sink() -> AnyCancellable {
         self.sink { _ in } receiveValue: { _ in }
     }

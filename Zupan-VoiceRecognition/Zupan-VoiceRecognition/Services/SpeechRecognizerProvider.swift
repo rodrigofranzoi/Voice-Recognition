@@ -10,9 +10,9 @@ import Speech
 import Combine
 
 protocol SpeechRecognizerProviderType {
-    var valueReceived: AnyPublisher<String, SpeechRecognizerError> { get }
+    var valueReceived: PassthroughSubject<String, SpeechRecognizerError> { get }
 
-    @discardableResult func start() -> AnyPublisher<Void, SpeechRecognizerError>
+    @discardableResult func start() -> AnyPublisher<(), SpeechRecognizerError>
     func stop()
 }
 
@@ -36,7 +36,7 @@ class SpeechRecognizerProvider: NSObject, SpeechRecognizerProviderType, SFSpeech
         self.locale = locale
     }
 
-    @discardableResult public func start() -> AnyPublisher<Void, SpeechRecognizerError> {
+    @discardableResult public func start() -> AnyPublisher<(), SpeechRecognizerError> {
         let audioEngine = AVAudioEngine()
         self.audioEngine = audioEngine
         self.request = SFSpeechAudioBufferRecognitionRequest()
@@ -54,17 +54,18 @@ class SpeechRecognizerProvider: NSObject, SpeechRecognizerProviderType, SFSpeech
         } catch {
             return Fail(error: SpeechRecognizerError.startFailure).eraseToAnyPublisher()
         }
-        return Empty().eraseToAnyPublisher()
+        return Just(())
+            .setFailureType(to: SpeechRecognizerError.self)
+            .eraseToAnyPublisher()
     }
 
-    public var valueReceived: AnyPublisher<String, SpeechRecognizerError> {
+    public var valueReceived: PassthroughSubject<String, SpeechRecognizerError> {
         if task == nil {
             guard let recognizer = self.speechRecognizer,
                   let request = self.request,
                   recognizer.isAvailable else {
                 recognitionSubject.send(completion: .failure(.notStarted))
                 return recognitionSubject
-                    .eraseToAnyPublisher()
             }
             self.task = recognizer.recognitionTask(with: request) { result, error in
                 if let error = error {
@@ -78,8 +79,6 @@ class SpeechRecognizerProvider: NSObject, SpeechRecognizerProviderType, SFSpeech
             }
         }
         return recognitionSubject
-            .share()
-            .eraseToAnyPublisher()
     }
 
     public func stop() {

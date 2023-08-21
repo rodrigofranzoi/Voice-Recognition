@@ -41,8 +41,9 @@ class SpeechToCommandManager: SpeechToCommandManagerType {
     }
 
     public func start() {
-        manager.start()
-        self.speechValueProvider
+        manager
+            .start()
+            .flatMap { _ in self.speechValueProvider }
             .sink()
             .store(in: &cancellables)
     }
@@ -97,7 +98,6 @@ class SpeechToCommandManager: SpeechToCommandManagerType {
             .filter { self.stateMachine.acceptedWords.contains($0) }
             .map { self.stateMachine.replacableWords[$0] ?? $0 }
             .compactMap { value in self.handleActionFor(value) }
-            .share()
             .eraseToAnyPublisher()
     }
 
