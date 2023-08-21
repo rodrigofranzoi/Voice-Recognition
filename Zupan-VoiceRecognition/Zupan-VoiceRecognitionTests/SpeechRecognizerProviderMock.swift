@@ -10,7 +10,6 @@ import Combine
 @testable import Zupan_VoiceRecognition
 
 final class SpeechRecognizerProviderMock: SpeechRecognizerProviderType {
-
     let mockSequence: [String]
     private let recognitionSubject = PassthroughSubject<String, SpeechRecognizerError>()
 
@@ -18,13 +17,15 @@ final class SpeechRecognizerProviderMock: SpeechRecognizerProviderType {
         self.mockSequence = mockSequence
     }
 
-    var valueReceived: AnyPublisher<String, Zupan_VoiceRecognition.SpeechRecognizerError> {
+    var valueReceived: PassthroughSubject<String, Zupan_VoiceRecognition.SpeechRecognizerError> {
         self.mockSequence.forEach { command in self.recognitionSubject.send(command) }
-        return recognitionSubject.eraseToAnyPublisher()
+        return recognitionSubject
     }
 
-    func start() -> AnyPublisher<Void, Zupan_VoiceRecognition.SpeechRecognizerError> {
-        return Empty().eraseToAnyPublisher()
+    func start() -> AnyPublisher<(), Zupan_VoiceRecognition.SpeechRecognizerError> {
+        return Just(())
+            .setFailureType(to: SpeechRecognizerError.self)
+            .eraseToAnyPublisher()
     }
 
     func stop() { }
