@@ -2,7 +2,9 @@
 
 Languages available: 🇺🇸 🇧🇷 🇩🇪
 
-Note: the commands will change according to the language.
+The app will automatically use the language of your phone, but you can choose the desired language by:
+
+`Edit Scheme -> Options -> App Language -> [System, English, Portuguese, German]`
 
 Note: the commands will change according to the language.
 
